@@ -19,7 +19,11 @@ const OnBoarding = () => {
         about: "",
         matches: [],
         location: "",
-        hobbies: []
+        hobbies: "",
+        interests: "",
+        idealdate: "",
+        qualities: "",
+        dealbreaker: ""
 
     })
 
@@ -199,13 +203,27 @@ const OnBoarding = () => {
                             <label htmlFor="everyone-gender-interest">Everyone</label>
 
                         </div>
-                        <select id="hobbies" name="hobbies" value={formData.hobbies} onChange={handleChange} required>
-                            <option value="Chess">Chess</option>
-                            <option value="Yoga">Yoga</option>
-                            <option value="Books">Books</option>
-                            <option value="Algeria">Algeria</option>
-                            <option value="etc, etc, etc">etc, etc, etc</option>
-                        </select>
+                        <label htmlFor="hobbies">Hobbies</label>
+                        <input
+                            id="hobbies"
+                            type="text"
+                            name="hobbies"
+                            required={true}
+                            placeholder="Traveling, Cooking, Reading, Hiking..."
+                            value={formData.hobbies}
+                            onChange={handleChange}
+                        />
+
+                        <label htmlFor="interests">Interests</label>
+                        <input
+                            id="interests"
+                            type="text"
+                            name="interests"
+                            required={true}
+                            placeholder="Sports, Arts and Culture, Outdoors..."
+                            value={formData.interests}
+                            onChange={handleChange}
+                        />
 
                         <label htmlFor='location'>Location</label>
                         <input
@@ -225,31 +243,65 @@ const OnBoarding = () => {
                             type="text"
                             name="about"
                             required={true}
-                            placeholder="I like long walks..."
+                            placeholder="I'm a passionate adventurer who loves exploring..."
                             value={formData.about}
                             onChange={handleChange}
                         />
 
+                        <label htmlFor="date">What is your ideal Date?</label>
+                        <input
+                            id="idealdate"
+                            type="text"
+                            name="idealdate"
+                            required={true}
+                            placeholder="A sunset stroll on the beach, hand in hand..."
+                            value={formData.idealdate}
+                            onChange={handleChange}
+                        />
+
+                        <label htmlFor="qualities">What are the qualities you are looking for in a partner?</label>
+                        <input
+                            id="qualities"
+                            type="text"
+                            name="qualities"
+                            required={true}
+                            placeholder="I value honesty, trustworthiness..."
+                            value={formData.qualities}
+                            onChange={handleChange}
+                        />
+
+                            <label htmlFor="dealbreaker">What are your deal breakers in a relationship?</label>
+                        <input
+                            id="dealbreaker"
+                            type="text"
+                            name="dealbreaker"
+                            required={true}
+                            placeholder="controlling or manipulative behavior..."
+                            value={formData.dealbreaker}
+                            onChange={handleChange}
+                        />
+                         <section>
+
+                            <label htmlFor="url">Profile Photo</label>
+                            <input
+                                type="url"
+                                name="url"
+                                id="url"        
+                                placeholder='image link'
+                                onChange={handleChange}
+                                required={true}
+                            />
+                            <div className="photo-container">
+                                {formData.url && <img src={formData.url} alt="profile pic preview"/>}
+                            </div>
+
+
+                        </section>
+
                         <input type="submit"/>
                     </section>
 
-                    <section>
-
-                        <label htmlFor="url">Profile Photo</label>
-                        <input
-                            type="url"
-                            name="url"
-                            id="url"
-                            placeholder='image link'
-                            onChange={handleChange}
-                            required={true}
-                        />
-                        <div className="photo-container">
-                            {formData.url && <img src={formData.url} alt="profile pic preview"/>}
-                        </div>
-
-
-                    </section>
+                   
 
                 </form>
             </div>

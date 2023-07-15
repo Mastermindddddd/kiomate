@@ -203,7 +203,11 @@ app.put('/user', async (req, res) => {
                 about: formData.about,
                 matches: formData.matches,
                 location: formData.location,
-                hobbies: formData.hobbies
+                hobbies: formData.hobbies,
+                interests: formData.interests,
+                idealdate: formData,idealdate,
+                qualities: formData.qualities,
+                dealbreaker: formData.dealbreaker
             },
         }
 
