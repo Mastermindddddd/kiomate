@@ -6,8 +6,7 @@ import axios from 'axios'
 const Dashboard = () => {
     const [user, setUser] = useState(null)
     const [genderedUsers, setGenderedUsers] = useState(null)
-    const [lastDirection, setLastDirection] = useState()
-    const [cookies, setCookie, removeCookie] = useCookies(['user'])
+    const [cookies] = useCookies(['user'])
 
     const userId = cookies.UserId
 
@@ -43,30 +42,6 @@ const Dashboard = () => {
             getGenderedUsers()
         }
     }, [user])
-
-    const updateMatches = async (matchedUserId) => {
-        try {
-            await axios.put('http://localhost:8000/addmatch', {
-                userId,
-                matchedUserId
-            })
-            getUser()
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
-
-    const swiped = (direction, swipedUserId) => {
-        if (direction === 'right') {
-            updateMatches(swipedUserId)
-        }
-        setLastDirection(direction)
-    }
-
-    const outOfFrame = (name) => {
-        console.log(name + ' left the screen!')
-    }
 
     const matchedUserIds = user?.matches.map(({user_id}) => user_id).concat(userId)
 
