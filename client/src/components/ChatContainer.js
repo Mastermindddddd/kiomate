@@ -47,7 +47,7 @@ const ChatContainer = ({ user }) => {
       >Matches</button>
 
       <button className={`tab ${clickedTab === 'chat' ? 'active' : ''}`} 
-      disabled={!clickedUser}>Chat</button>
+      disabled={!clickedUser}></button>
 
 
         <button
