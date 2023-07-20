@@ -6,7 +6,7 @@ const Chat = ({descendingOrderMessages}) => {
                     <div key={_index} className="chat-message">
                         <div className="chat-message-header">
                             <div className="img-container">
-                                <img src={message.img} alt={message.name + ' profile'}/><p>{message.name}:  {message.message}</p>
+                                <img src={message.img} alt={message.name + ' profile'}/>
                             </div>
                         </div>
                         <div className="user-message-container" >

@@ -239,43 +239,71 @@ nav .logo-container .logo {
 .dashboard {
     display: flex;
     justify-content: space-between;
-}
-
-.dashboard .swipe-container {
+  }
+  
+  .dashboard .swipe-container {
     width: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-}
-
-.swipe {
-    position: absolute;
-}
-
-.dashboard .card-container {
+  }
+  
+  .swipe {
+    position: relative; /* Change to relative */
+  }
+  
+  .card-container {
+    position: relative;
+    width: 450px; /* Adjust the width as needed */
+    margin-top: 0;
+  }
+  
+  .card {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
     width: 100%;
-    height: 100vh;
-}
-
-.card {
-    width: 700px;
-    height: 100vh;
-    border-radius: 30px;
+    height: 100vh; /* Adjust the height as needed */
     background-size: cover;
     background-position: center;
-}
-
-.card h3 {
-    margin-top: 0;
-}
-
-.dashboard .swipe-info {
+    border-radius: 20px;
+  }
+  
+  .card-info-container {
     position: absolute;
-    bottom: 0;
-    padding: 10px;
-}
+    top: 0;
+    left: 600px; /* Change to right */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    width: 450px; /* Adjust the width as needed */
+    height: 100%; /* Adjust the height as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .card-buttons {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .card-buttons button {
+    padding: 10px 20px;
+    background-color: #ff4c4c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .card-buttons button:hover {
+    background-color: #ff3333;
+  }
+  
 
 /*-------- Chat Container --------*/
 html, body {
@@ -386,15 +414,34 @@ html, body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-}
-.chat-input textarea {
+  }
+  
+  .chat-input textarea {
     width: 100%;
     height: 50px;
     border-radius: 10px;
     font-size: 16px;
     background-color: #fff;
     padding: 12px 15px;
-}
+  }
+  
+  .picker-container {
+    position: relative;
+    width: 300px;
+  }
+  
+  .emoji-picker-button {
+    font-size: 20px;
+    padding: 5px;
+  }
+  
+  .emoji-picker-container {
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    z-index: 1;
+  }
+  
 
 /*------- code for responsiveness -----------*/
 @media (max-width: 1231px) {

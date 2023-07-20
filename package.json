@@ -1,8 +1,11 @@
 {
   "dependencies": {
+    "emoji-mart": "^5.5.2",
+    "emoji-picker-react": "^4.4.10",
     "multiselect-react-dropdown": "^2.0.25",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-emoji-picker": "^1.0.13",
     "react-multi-select-component": "^4.3.4",
     "react-router-dom": "^6.14.1",
     "react-select": "^5.7.4"
