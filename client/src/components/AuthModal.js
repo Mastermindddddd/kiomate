@@ -1,53 +1,69 @@
-import { useState } from 'react'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-import { useCookies } from 'react-cookie'
+import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
+const AuthModal = ({ setShowModal, isSignUp }) => {
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [confirmPassword, setConfirmPassword] = useState(null);
+  const [error, setError] = useState(null);
+  const [cookies, setCookie, removeCookie] = useCookies(null);
 
-const AuthModal = ({ setShowModal,  isSignUp }) => {
-    const [email, setEmail] = useState(null)
-    const [password, setPassword] = useState(null)
-    const [confirmPassword, setConfirmPassword] = useState(null)
-    const [error, setError] = useState(null)
-    const [ cookies, setCookie, removeCookie] = useCookies(null)
+  let navigate = useNavigate();
 
-    let navigate = useNavigate()
+  const handleClick = () => {
+    setShowModal(false);
+  };
 
-    console.log(email, password, confirmPassword)
+  const validateEmailFormat = (email) => {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailPattern.test(email);
+  };
 
+  const validatePasswordStrength = (password) => {
+    // Add your password strength criteria here, e.g., minimum length, uppercase, lowercase, special characters, etc.
+    return password && password.length >= 8; // For example, at least 8 characters
+  };
 
-    const handleClick = () => {
-        setShowModal(false)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      if (!validateEmailFormat(email)) {
+        setError('Invalid email format. Please enter a valid email.');
+        return;
+      }
+
+      if (!validatePasswordStrength(password)) {
+        setError('Password must be at least 8 characters long.');
+        return;
+      }
+
+      if (isSignUp && password !== confirmPassword) {
+        setError('Passwords need to match!');
+        return;
+      }
+
+      const response = await axios.post(`http://localhost:8000/${isSignUp ? 'signup' : 'login'}`, { email, password });
+
+      setCookie('AuthToken', response.data.token);
+      setCookie('UserId', response.data.userId);
+
+      const success = response.status === 201;
+      if (success && isSignUp) navigate('/OnBoarding');
+      if (success && !isSignUp) navigate('/Dashboard');
+
+      window.location.reload();
+
+    } catch (error) {
+      if (error.response && error.response.status === 409) {
+        setError('User already exists. Please log in');
+      } else {
+        console.log(error);
+      }
     }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-
-        try {
-            if (isSignUp && (password !== confirmPassword)) {
-                setError('Passwords need to match!')
-                return
-            }
-
-            const response = await axios.post(`http://localhost:8000/${isSignUp ? 'signup' : 'login'}`, { email, password })
-
-            setCookie('AuthToken', response.data.token)
-            setCookie('UserId', response.data.userId)
-
-            const success = response.status === 201
-            if (success && isSignUp) navigate ('/OnBoarding')
-            if (success && !isSignUp) navigate ('/Dashboard')
-
-            window.location.reload()
-
-        } catch (error) {
-            if (error.response && error.response.status === 409) {
-                setError('User already exists. Please log in');
-              } else {
-            console.log(error)
-        }
-    }
-    }
+  };
 
     return (
         <div className="auth-modal">
@@ -81,10 +97,8 @@ const AuthModal = ({ setShowModal,  isSignUp }) => {
                     placeholder="confirm password"
                     required={true}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-                }
-                <input className="secondary-button" type="submit" value={isSignUp ? "SIGN UP" : "LOG"}/>
-                
+                />}
+                <input className="secondary-button" type="submit" value="SIGN UP"/>
                 <p>{error}</p>
             </form>
 

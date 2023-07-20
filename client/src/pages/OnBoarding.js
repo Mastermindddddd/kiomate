@@ -45,12 +45,44 @@ const OnBoarding = () => {
 
     const handleChange = (e) => {
         const { type, name, value, checked } = e.target;
-        const fieldValue = type === "checkbox" ? checked : value;
+        const fieldValue = type === 'checkbox' ? checked : value;
       
-        if (name === "dob_day" || name === "dob_month" || name === "dob_year") {
+        if (name === 'dob_day' || name === 'dob_month' || name === 'dob_year') {
+          const intValue = parseInt(fieldValue, 10);
+      
+          // Check if it's a valid number (not NaN) and greater than 0
+          if (!isNaN(intValue) && intValue > 0) {
+            // Restrict date of birth values
+            if (name === 'dob_day' && (intValue < 1 || intValue > 31)) {
+              return;
+            }
+            if (name === 'dob_month' && (intValue < 1 || intValue > 12)) {
+              return;
+            }
+            if (name === 'dob_year' && (intValue < 1900 || intValue > 2023)) {
+              return;
+            }
+      
+            setFormData((prevState) => ({
+              ...prevState,
+              [name]: intValue,
+            }));
+          } else {
+            // Handle invalid input (non-numeric characters and 0)
+            setFormData((prevState) => ({
+              ...prevState,
+              [name]: '',
+            }));
+          }
+        } else if (name === 'first_name') {
+          // Restrict first name to alphabets only
+          if (!/^[A-Za-z]+$/.test(fieldValue)) {
+            return;
+          }
+      
           setFormData((prevState) => ({
             ...prevState,
-            [name]: parseInt(fieldValue, 10),
+            [name]: fieldValue,
           }));
         } else {
           setFormData((prevState) => ({
@@ -59,6 +91,8 @@ const OnBoarding = () => {
           }));
         }
       };
+      
+      
       
       
 
