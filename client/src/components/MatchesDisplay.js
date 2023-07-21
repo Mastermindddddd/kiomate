@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 const MatchesDisplay = ({ matches, setClickedUser }) => {
   const [matchedProfiles, setMatchedProfiles] = useState(null);
   const [cookies, setCookie, removeCookie] = useCookies(null);
+  const [isMounted, setIsMounted] = useState(true);
 
   const matchedUserIds = matches.map(({ user_id }) => user_id);
   const userId = cookies.UserId;
@@ -14,7 +15,9 @@ const MatchesDisplay = ({ matches, setClickedUser }) => {
       const response = await axios.get("http://localhost:8000/users", {
         params: { userIds: JSON.stringify(matchedUserIds) },
       });
-      setMatchedProfiles(response.data);
+      if (isMounted) { // Check if the component is still mounted before updating state
+        setMatchedProfiles(response.data);
+      }
     } catch (error) {
       console.log(error);
     }

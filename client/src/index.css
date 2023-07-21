@@ -245,19 +245,17 @@ nav .logo-container .logo {
     width: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     height: 100vh;
+    justify-content: space-between;
   }
   
   
-  .swipe {
-    position: relative; /* Change to relative */
-  }
+  
   
   .card-container {
     position: relative;
-    width: 450px; /* Adjust the width as needed */
+    width: 100vh; /* Adjust the width as needed */
     margin-top: 0;
     
   }
@@ -266,12 +264,15 @@ nav .logo-container .logo {
     display: flex;
     align-items: flex-start;
     position: relative;
-    width: 100%;
-    height: 100vh; /* Adjust the height as needed */
+    width: 600px;
+    height: 750px; /* Adjust the height as needed */
     background-size: cover;
     background-position: center;
     border-radius: 20px;
+    margin-left: 300px;
   }
+
+  
   
   .card-info-container {
     position: absolute;
@@ -280,27 +281,59 @@ nav .logo-container .logo {
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.6);
     color: #fff;
-    width: 450px; /* Adjust the width as needed */
-    height: 100%; /* Adjust the height as needed */
+    width: 500px; /* Adjust the width as needed */
+    height: 663px; /* Adjust the height as needed */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    border-radius: 20px;
   }
   
   .card-buttons {
     position: absolute;
     bottom: 20px;
-    right: 20px;
+    right: 50px;
   }
   
   .card-buttons button {
     padding: 10px 20px;
-    background-color: #ff4c4c;
+    background: linear-gradient(260deg, #12c2e9, #c471ed, #f64f59);
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
+  
+  .connect-button {
+    -webkit-background-clip: text;
+    font-size: 30px;
+    background-clip: text;
+    float: left;
+    margin-left: 230px;
+  }
+  
+  
+  .back-button {
+    /* Add your existing styles */
+    -webkit-background-clip: text;
+    font-size: 30px;
+    background-clip: text;
+    float: left;
+    margin-right: 230px;
+
+    
+  }
+  
+  .next-button {
+    /* Add your existing styles */
+    -webkit-background-clip: text;
+    font-size: 30px;
+    background-clip: text;
+    float: right;
+    margin-left: 150px;
+    
+  }
+  
   
   .card-buttons button:hover {
     background-color: #ff3333;
@@ -337,10 +370,18 @@ html, body {
     opacity: 0.8;
 
   }
+
+  .displayed-message {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
   
   .chat-container .chat-container-header {
     background: -moz-linear-gradient(top, #f64f59 0%, #f64f59 50%, #f64f59 51%, #c471ed 100%);
-    width: 100%;
+    width: 1806px;
     height: 100px;
     display: flex;
     justify-content: space-between;

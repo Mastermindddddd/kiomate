@@ -80,9 +80,9 @@ const CardContainer = () => {
       <div className="card-container">
         {currentGenderedUser && (
           <TinderCard
-            className="swipe"
             key={currentGenderedUser.user_id}
           >
+
             <div
               style={{ backgroundImage: `url(${currentGenderedUser.url})` }}
               className="card"
@@ -101,23 +101,30 @@ const CardContainer = () => {
                 <p>Deal Breaker: {currentGenderedUser.dealbreaker}</p>
               </div>
               <div className="card-buttons">
+                <div className='connect-button'>
                 <button onClick={() => handleVibe(currentGenderedUser.user_id, currentGenderedUser.first_name)}>
-                  Vibe
+                  connect
                 </button>
+                </div>
+                <div className="navigation-buttons">
+        <div className='back-button'>
+          <button onClick={handleBack} disabled={currentIndex === 0}>
+            Back
+          </button>
+        </div>
+        <div className='next-button'>
+          <button onClick={handleNext} disabled={currentIndex === filteredGenderedUsers.length - 1}>
+            Next
+          </button>
+        </div>
+      </div>
               </div>
             </div>
           </TinderCard>
         )}
       </div>
-      <div className="navigation-buttons">
-        <button onClick={handleBack} disabled={currentIndex === 0}>
-          Back
-        </button>
-        <button onClick={handleNext} disabled={currentIndex === filteredGenderedUsers.length - 1}>
-          Next
-        </button>
-      </div>
     </div>
+    
   );
 };
 

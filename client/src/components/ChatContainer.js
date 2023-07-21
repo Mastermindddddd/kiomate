@@ -5,7 +5,6 @@ import ChatDisplay from './ChatDisplay';
 import CardContainer from './CardContainer';
 import axios from 'axios';
 
-
 const ChatContainer = ({ user }) => {
   const [clickedTab, setClickedTab] = useState('matches');
   const [clickedUser, setClickedUser] = useState(null);
@@ -39,16 +38,23 @@ const ChatContainer = ({ user }) => {
       <ChatHeader user={user} />
 
       <div className="tab-container">
-      <button className={`tab ${clickedTab === 'matches' ? 'active' : ''}`} 
-      onClick={() => {
-        setClickedTab('matches');
-        setClickedUser(null);
-      }}
-      >Matches</button>
+        <button
+          className={`tab ${clickedTab === 'matches' ? 'active' : ''}`} 
+          onClick={() => {
+            setClickedTab('matches');
+            setClickedUser(null);
+          }}
+        >
+          Matches
+        </button>
 
-      <button className={`tab ${clickedTab === 'chat' ? 'active' : ''}`} 
-      disabled={!clickedUser}></button>
-
+        <button
+          className={`tab ${clickedTab === 'chat' ? 'active' : ''}`} 
+          disabled={!clickedUser}
+        >
+          {/* Add a label for the Chat tab */}
+          Chat
+        </button>
 
         <button
           className={`tab ${clickedTab === 'discover' ? 'active' : ''}`}
@@ -59,14 +65,21 @@ const ChatContainer = ({ user }) => {
       </div>
 
       {clickedTab === 'matches' && !clickedUser && (
-  <MatchesDisplay matches={user.matches} setClickedUser={setClickedUser} />
-)}
+        <MatchesDisplay matches={user.matches} setClickedUser={setClickedUser} />
+      )}
 
+      {/* Display a message when there are no matches */}
+      {clickedTab === 'matches' && !clickedUser && user.matches.length === 0 && (
+        <div className='displayed-message'>
+        <p>No matches found. tap the Discover tab above to discover your Person!</p>
+        </div>
+      )}
 
-      {clickedUser && <ChatDisplay user={user} clickedUser={clickedUser}/>}
+      {clickedUser && <ChatDisplay user={user} clickedUser={clickedUser} />}
 
       {clickedTab === 'discover' && (
         <CardContainer filteredGenderedUsers={filteredGenderedUsers} />
+        
       )}
     </div>
   );
