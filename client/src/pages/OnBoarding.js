@@ -9,9 +9,9 @@ const OnBoarding = () => {
     const [formData, setFormData] = useState({
         user_id: cookies.UserId,
         first_name: "",
-        dob_day: "",
-        dob_month: "",
-        dob_year: "",
+        dob_day: "31",
+        dob_month: "12",
+        dob_year: new Date().getFullYear().toString(),
         show_gender: false,
         gender_identity: "man",
         gender_interest: "woman",
@@ -47,25 +47,24 @@ const OnBoarding = () => {
         const { type, name, value, checked } = e.target;
         const fieldValue = type === 'checkbox' ? checked : value;
       
-        if (name === 'dob_day' || name === 'dob_month' || name === 'dob_year') {
+        if (name === 'dob_day' || name === 'dob_month') {
+          // Parse the field value to an integer
           const intValue = parseInt(fieldValue, 10);
       
           // Check if it's a valid number (not NaN) and greater than 0
           if (!isNaN(intValue) && intValue > 0) {
-            // Restrict date of birth values
+            // Restrict date values for day and month
             if (name === 'dob_day' && (intValue < 1 || intValue > 31)) {
               return;
             }
             if (name === 'dob_month' && (intValue < 1 || intValue > 12)) {
               return;
             }
-            if (name === 'dob_year' && (intValue < 1900 || intValue > 2023)) {
-              return;
-            }
       
+            // Update the state with the parsed integer value
             setFormData((prevState) => ({
               ...prevState,
-              [name]: intValue,
+              [name]: intValue.toString(),
             }));
           } else {
             // Handle invalid input (non-numeric characters and 0)
@@ -74,23 +73,50 @@ const OnBoarding = () => {
               [name]: '',
             }));
           }
-        } else if (name === 'first_name') {
-          // Restrict first name to alphabets only
-          if (!/^[A-Za-z]+$/.test(fieldValue)) {
-            return;
-          }
+        } else if (name === 'dob_year') {
+          // Parse the field value to an integer
+          const intValue = parseInt(fieldValue, 10);
       
-          setFormData((prevState) => ({
-            ...prevState,
-            [name]: fieldValue,
-          }));
-        } else {
-          setFormData((prevState) => ({
-            ...prevState,
-            [name]: fieldValue,
-          }));
-        }
-      };
+          // Check if it's a valid number (not NaN) and within the desired range
+          if (!isNaN(intValue) && intValue >= 1900 && intValue <= new Date().getFullYear()) {
+            // Update the state with the parsed integer value
+            setFormData((prevState) => ({
+              ...prevState,
+              [name]: intValue.toString(),
+            }));
+          } else {
+            // Handle invalid input (non-numeric characters, 0, or values outside the range)
+            setFormData((prevState) => ({
+              ...prevState,
+              [name]: '',
+            }));
+          }
+        } else if (name === 'first_name') {
+            // Allow an empty first name
+            if (fieldValue === '') {
+              setFormData((prevState) => ({
+                ...prevState,
+                [name]: fieldValue,
+              }));
+            } else if (!/^[A-Za-z]+$/.test(fieldValue)) {
+              // Restrict first name to alphabets only
+              return;
+            } else {
+              // Update the state with the alphabetic value
+              setFormData((prevState) => ({
+                ...prevState,
+                [name]: fieldValue,
+              }));
+            }
+          } else {
+            // For other inputs (not date of birth or first name), update the state normally
+            setFormData((prevState) => ({
+              ...prevState,
+              [name]: fieldValue,
+            }));
+          }
+        };
+      
       
       
       

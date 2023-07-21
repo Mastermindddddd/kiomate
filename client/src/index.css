@@ -250,6 +250,7 @@ nav .logo-container .logo {
     height: 100vh;
   }
   
+  
   .swipe {
     position: relative; /* Change to relative */
   }
@@ -258,6 +259,7 @@ nav .logo-container .logo {
     position: relative;
     width: 450px; /* Adjust the width as needed */
     margin-top: 0;
+    
   }
   
   .card {
@@ -313,17 +315,31 @@ html, body {
   }
   
   .chat-container {
-    background-color: rgb(255, 255, 255);
     width: 100%;
     height: 100vh;
     text-align: left;
     display: flex;
     flex-direction: column;
     flex-grow: 0;
+    position: relative;
+    isolation: isolate;
+    background-image: url('images/xavier-portela-new-york-glow-7.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .chat-container::after{
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: #fff;
+    opacity: 0.8;
+
   }
   
   .chat-container .chat-container-header {
-    background: linear-gradient(45deg, #bc4e9c,#f80759 );
+    background: -moz-linear-gradient(top, #f64f59 0%, #f64f59 50%, #f64f59 51%, #c471ed 100%);
     width: 100%;
     height: 100px;
     display: flex;
@@ -340,6 +356,7 @@ html, body {
     padding: 10px;
     cursor: pointer;
     color: #888888;
+    
   }
 
   .chat-container .tab.active {
@@ -376,6 +393,8 @@ html, body {
   .img-container img {
     width: 100%;
   }
+
+  
   
   @media (max-width: 600px) {
     .chat-container {
