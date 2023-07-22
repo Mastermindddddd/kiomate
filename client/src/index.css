@@ -462,7 +462,7 @@ html, body {
 
 .user-message-container {
     margin-left: 60px;
-    background-color: #f80759;
+    background-color: #ac2d57;
     padding: 10px;
     color: aquamarine;
     width: fit-content;
@@ -471,37 +471,41 @@ html, body {
 
 /*-------- Chat Input --------*/
 .chat-input {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .chat-input textarea {
-    width: 100%;
-    height: 50px;
-    border-radius: 10px;
-    font-size: 16px;
-    background-color: #fff;
-    padding: 12px 15px;
-  }
-  
-  .picker-container {
-    position: relative;
-    width: 300px;
-  }
-  
-  .emoji-picker-button {
-    font-size: 20px;
-    padding: 5px;
-  }
-  
-  .emoji-picker-container {
-    position: absolute;
-    bottom: 50px;
-    right: 0;
-    z-index: 1;
-  }
-  
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+  align-items: center; /* Added to vertically align elements */
+}
+
+.text-area-container {
+  display: flex;
+  align-items: center; /* Vertically align elements inside the container */
+  padding: 5px;
+  flex: 1; /* To occupy available space */
+}
+
+.chat-input textarea {
+  width: 100%;
+  height: 40px;
+  border-radius: 50px;
+  font-size: 16px;
+  background-color: #f64f59;
+  resize: none;
+  color: #fff;
+}
+
+.emoji-button {
+  font-size: 50px;
+  margin-left: 10px; /* Add some spacing between text area and button */
+}
+
+.send-button {
+  height: 60px;
+  width: 70px;
+  border-radius: 50px;
+  font-size: 25px;
+}
 
 /*------- code for responsiveness -----------*/
 @media (max-width: 1231px) {

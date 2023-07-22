@@ -57,7 +57,7 @@ const ChatInput = ({ user, clickedUser, getUserMessages, getClickedUsersMessages
           onClick={addMessage}
           data-picker-button="emoji-picker"
         >
-          Submit
+         ➤
         </button>
         <div className='d-flex flex-column align-items-center'>
           <button
