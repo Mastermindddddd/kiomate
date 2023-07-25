@@ -235,6 +235,7 @@ nav .logo-container .logo {
     width: 100%
 }
 
+
 /*-------- Dashboard  --------*/
 .dashboard {
     display: flex;
@@ -293,6 +294,11 @@ nav .logo-container .logo {
     position: absolute;
     bottom: 20px;
     right: 50px;
+  }
+
+  .message {
+    font-size: 18px;
+    color: #261ad1;
   }
   
   .card-buttons button {
@@ -453,6 +459,18 @@ html, body {
     height: 60vh;
     overflow-y: auto;
 }
+
+.match-card {
+  background: #ffd8da;
+    width: 1780px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-radius: 20px;
+}
+
+
 
 .chat-message {
     display: flex;

@@ -52,8 +52,6 @@ const ChatContainer = ({ user }) => {
           className={`tab ${clickedTab === 'chat' ? 'active' : ''}`} 
           disabled={!clickedUser}
         >
-          {/* Add a label for the Chat tab */}
-          Chat
         </button>
 
         <button

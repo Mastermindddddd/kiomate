@@ -203,6 +203,7 @@ app.put('/user', async (req, res) => {
                 about: formData.about,
                 matches: formData.matches,
                 location: formData.location,
+                show_users: formData.show_users,
                 hobbies: formData.hobbies,
                 interests: formData.interests,
                 idealdate: formData.idealdate,

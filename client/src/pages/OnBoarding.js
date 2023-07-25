@@ -6,6 +6,7 @@ import axios from 'axios'
 
 const OnBoarding = () => {
     const [cookies, setCookie, removeCookie] = useCookies(null)
+    const [error, setError] = useState(null);
     const [formData, setFormData] = useState({
         user_id: cookies.UserId,
         first_name: "",
@@ -19,6 +20,7 @@ const OnBoarding = () => {
         about: "",
         matches: [],
         location: "",
+        show_users: false,
         hobbies: "",
         interests: "",
         idealdate: "",
@@ -44,80 +46,65 @@ const OnBoarding = () => {
     }
 
     const handleChange = (e) => {
-        const { type, name, value, checked } = e.target;
-        const fieldValue = type === 'checkbox' ? checked : value;
+      const { type, name, value, checked } = e.target;
+      const fieldValue = type === 'checkbox' ? checked : value;
+    
+      if (fieldValue === '') {
+        setError(null); // Clear the error when the input is empty
+      }
+    
+      if (name === 'dob_day' || name === 'dob_month') {
+        // Parse the field value to an integer
+        const intValue = parseInt(fieldValue, 10);
+    
+        // Check if it's a valid number (not NaN) and greater than 0 and less than 32 for day, 13 for month
+        if (!isNaN(intValue) && intValue > 0 && intValue < 32) {
+          // Update the state with the parsed integer value
+          setFormData((prevState) => ({
+            ...prevState,
+            [name]: intValue.toString(),
+          }));
+        } else {
+          // Handle invalid input (non-numeric characters, 0, or values outside the range)
+          setError('Enter a valid day or month');
+        }
+      } else if (name === 'dob_year' || name === 'age') {
+        // Parse the field value to an integer
+        const intValue = parseInt(fieldValue, 10);
+    
+        // Check if it's a valid number (not NaN) and within the desired range
+        if (!isNaN(intValue) && intValue.toString().length <= 4) {
+          // Update the state with the parsed integer value
+          setFormData((prevState) => ({
+            ...prevState,
+            [name]: intValue.toString(),
+          }));
+        } else {
+          // Handle invalid input (non-numeric characters, or values with more than 4 digits)
+          setError('Enter a valid ' + (name === 'dob_year' ? 'year' : 'age'));
+        }
+      } else if (name === 'first_name') {
+        // Allow an empty first name
+        setFormData((prevState) => ({
+          ...prevState,
+          [name]: fieldValue,
+        }));
+      } else {
+        // For other inputs (not date of birth or first name), update the state normally
+        setFormData((prevState) => ({
+          ...prevState,
+          [name]: fieldValue,
+        }));
+      }
+    };
+    
       
-        if (name === 'dob_day' || name === 'dob_month') {
-          // Parse the field value to an integer
-          const intValue = parseInt(fieldValue, 10);
-      
-          // Check if it's a valid number (not NaN) and greater than 0
-          if (!isNaN(intValue) && intValue > 0) {
-            // Restrict date values for day and month
-            if (name === 'dob_day' && (intValue < 1 || intValue > 31)) {
-              return;
-            }
-            if (name === 'dob_month' && (intValue < 1 || intValue > 12)) {
-              return;
-            }
-      
-            // Update the state with the parsed integer value
-            setFormData((prevState) => ({
-              ...prevState,
-              [name]: intValue.toString(),
-            }));
-          } else {
-            // Handle invalid input (non-numeric characters and 0)
-            setFormData((prevState) => ({
-              ...prevState,
-              [name]: '',
-            }));
-          }
-        } else if (name === 'dob_year') {
-          // Parse the field value to an integer
-          const intValue = parseInt(fieldValue, 10);
-      
-          // Check if it's a valid number (not NaN) and within the desired range
-          if (!isNaN(intValue) && intValue >= 1900 && intValue <= new Date().getFullYear()) {
-            // Update the state with the parsed integer value
-            setFormData((prevState) => ({
-              ...prevState,
-              [name]: intValue.toString(),
-            }));
-          } else {
-            // Handle invalid input (non-numeric characters, 0, or values outside the range)
-            setFormData((prevState) => ({
-              ...prevState,
-              [name]: '',
-            }));
-          }
-        } else if (name === 'first_name') {
-            // Allow an empty first name
-            if (fieldValue === '') {
-              setFormData((prevState) => ({
-                ...prevState,
-                [name]: fieldValue,
-              }));
-            } else if (!/^[A-Za-z]+$/.test(fieldValue)) {
-              // Restrict first name to alphabets only
-              return;
-            } else {
-              // Update the state with the alphabetic value
-              setFormData((prevState) => ({
-                ...prevState,
-                [name]: fieldValue,
-              }));
-            }
-          } else {
-            // For other inputs (not date of birth or first name), update the state normally
-            setFormData((prevState) => ({
-              ...prevState,
-              [name]: fieldValue,
-            }));
-          }
-        };
-      
-      
+    const days = Array.from({ length: 31 }, (_, i) => i + 1);
+  const months = Array.from({ length: 12 }, (_, i) => i + 1);
+
+  // Generate years dropdown options from the current year to 100 years ago
+  const currentYear = new Date().getFullYear();
+  const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
       
       
       
@@ -147,48 +134,65 @@ const OnBoarding = () => {
                             onChange={handleChange}
                         />
 
-                        <label>Birthday</label>
-                        <div className="multiple-input-container">
-                            <input
-                                id="dob_day"
-                                type="number"
-                                name="dob_day"
-                                placeholder="DD"
-                                required={true}
-                                value={formData.dob_day}
-                                onChange={handleChange}
-                            />
+<label htmlFor="dob_day">Birthday</label>
+        <div className="multiple-input-container">
+          <select
+            id="dob_day"
+            name="dob_day"
+            required={true}
+            value={formData.dob_day}
+            onChange={handleChange}
+          >
+            {days.map((day) => (
+              <option key={day} value={day}>
+                {day}
+              </option>
+            ))}
+          </select>
 
-                            <input
-                                id="dob_month"
-                                type="number"
-                                name="dob_month"
-                                placeholder="MM"
-                                required={true}
-                                value={formData.dob_month}
-                                onChange={handleChange}
-                            />
+          <select
+            id="dob_month"
+            name="dob_month"
+            required={true}
+            value={formData.dob_month}
+            onChange={handleChange}
+          >
+            {months.map((month) => (
+              <option key={month} value={month}>
+                {month}
+              </option>
+            ))}
+          </select>
 
-                            <input
-                                id="dob_year"
-                                type="number"
-                                name="dob_year"
-                                placeholder="YYYY"
-                                required={true}
-                                value={formData.dob_year}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <label>Age</label>
-                        <input
-                                id="age"
-                                type="number"
-                                name="age"
-                                placeholder='28'
-                                required={true}
-                                value={formData.age}
-                                onChange={handleChange}
-                            />
+          <select
+            id="dob_year"
+            name="dob_year"
+            required={true}
+            value={formData.dob_year}
+            onChange={handleChange}
+          >
+            {years.map((year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <label>Age</label>
+        <select
+          id="age"
+          name="age"
+          required={true}
+          value={formData.age}
+          onChange={handleChange}
+        >
+          {years.map((year) => (
+            <option key={year} value={currentYear - year}>
+              {currentYear - year}
+            </option>
+          ))}
+        </select>
 
                         <label>Gender</label>
                         <div className="multiple-input-container">
@@ -295,6 +299,17 @@ const OnBoarding = () => {
                             value={formData.location}
                             onChange={handleChange}
                             />
+<div className='show-users'>
+<label htmlFor="show-users">Show Me people from near my location</label>
+
+<input
+    id="show-users"
+    type="checkbox"
+    name="show_users"
+    onChange={handleChange}
+    checked={formData.show_users}
+/>
+</div>
 
 
                         <label htmlFor="about">About me</label>

@@ -9,6 +9,7 @@ const CardContainer = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cookies] = useCookies(['user']);
   const userId = cookies.UserId;
+  const [message, setMessage] = useState('');
 
   const getUser = async () => {
     try {
@@ -56,7 +57,12 @@ const CardContainer = () => {
 
   const handleVibe = (vibedUserId, name) => {
     updateMatches(vibedUserId);
-    console.log(name + ' is now added to your chats');
+    setMessage('Your request was sent to ' + name);
+
+    // Clear the message after 3 seconds
+    setTimeout(() => {
+      setMessage('');
+    }, 3000);
   };
 
   const handleNext = () => {
@@ -82,6 +88,7 @@ const CardContainer = () => {
           <TinderCard
             key={currentGenderedUser.user_id}
           >
+            
 
             <div
               style={{ backgroundImage: `url(${currentGenderedUser.url})` }}
@@ -102,6 +109,7 @@ const CardContainer = () => {
               </div>
               <div className="card-buttons">
                 <div className='connect-button'>
+                {message && <div className="message">{message}</div>}
                 <button onClick={() => handleVibe(currentGenderedUser.user_id, currentGenderedUser.first_name)}>
                   connect
                 </button>
