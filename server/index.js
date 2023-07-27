@@ -10,10 +10,26 @@ require('dotenv').config()
 
 
 const app = express()
-app.use(cors())
 app.use(express.json())
 
 const uri = process.env.URI
+
+const allowedOrigins = ['https://kiomate.online'];
+
+// CORS setup
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
+
+app.use(cors(corsOptions));
+
+
 
 // Default
 app.get('/', (req, res) => {
