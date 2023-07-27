@@ -526,6 +526,44 @@ html, body {
 }
 
 /*------- code for responsiveness -----------*/
-@media (max-width: 1231px) {
+@media (max-width: 767px) {
+  .logo-container h2 {
+    background: linear-gradient(260deg, #12c2e9, #c471ed, #f64f59);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 25px;
+    background-clip: text;
+    margin-right: 140px;
+  }
+}
 
+@media (max-width: 767px) {
+  nav .nav-button {
+    background: linear-gradient(260deg,  #12c2e9,#c471ed,#f64f59);
+    background-color: rgb(255, 255, 255);
+    font-size: 17px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: none;
+    margin: 10px;
+}
+
+}
+
+@media (max-width: 767px) {
+  .home h1 {
+    font-size: 22px;
+}
+}
+
+@media (max-width: 767px) {
+  .home .primary-button {
+    color: rgb(255,255,255);
+    text-transform: uppercase;
+    font-size: 13px;
+    background: linear-gradient(45deg, #12c2e9,#c471ed,#f64f59 );
+    padding: 10px 26px;
+    border-radius: 30px;
+    border: none;
+  }
 }
