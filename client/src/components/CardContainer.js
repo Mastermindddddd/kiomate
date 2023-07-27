@@ -13,7 +13,7 @@ const CardContainer = () => {
 
   const getUser = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/user', {
+      const response = await axios.get('/user', {
         params: { userId }
       });
       setUser(response.data);
@@ -24,7 +24,7 @@ const CardContainer = () => {
 
   const getGenderedUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/gendered-users', {
+      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/gendered-users`, {
         params: { gender: user?.gender_interest }
       });
       setGenderedUsers(response.data);
@@ -45,7 +45,7 @@ const CardContainer = () => {
 
   const updateMatches = async (matchedUserId) => {
     try {
-      await axios.put('http://localhost:8000/addmatch', {
+      await axios.put(`${process.env.REACT_APP_SERVER_URL}/addmatch`, {
         userId,
         matchedUserId
       });

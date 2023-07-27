@@ -8,7 +8,7 @@ const Nav = ({ authToken, minimal, setShowModal, showModal, setIsSignUp }) => {
   return (
     <nav>
       <div className="logo-container">
-       <h2>V!BECONNECT</h2>
+       <h2>kiomate</h2>
       </div>
       {!authToken && !minimal && (
         <button
