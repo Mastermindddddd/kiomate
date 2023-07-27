@@ -621,6 +621,7 @@ html, body {
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     padding: 1px;
+
 }
 
 .auth-modal .close-icon {
@@ -630,12 +631,13 @@ html, body {
 .auth-modal form h1 {
   align-self: flex-start;
   margin-bottom: 5px;
-  margin-left: 10px;
+  margin-left: 40px;
   font-size: 12px;
 }
 
 .auth-modal p {
   font-size: 13px;
+  
 }
 
 .auth-modal h2 {
@@ -650,10 +652,13 @@ html, body {
 .auth-modal input[type=password],
 .auth-modal input[type=email] {
   padding: 8px;
-  margin: 8px;
+  margin-left: 40px;
   font-size: 12px;
   width: 250px;
 }
 
-
+.auth-modal .secondary-button{
+  width: 270px;
+  margin-left: 40px;
+}
 }
