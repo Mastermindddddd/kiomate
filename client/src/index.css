@@ -609,3 +609,51 @@ html, body {
 }
 
 }
+@media (max-width: 700px) {
+  .auth-modal {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50px;
+    margin: 0 auto;
+    max-width: 360px;
+    height: 600px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 1px;
+}
+
+.auth-modal .close-icon {
+  float: right;
+}
+
+.auth-modal form h1 {
+  align-self: flex-start;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+.auth-modal p {
+  font-size: 13px;
+}
+
+.auth-modal h2 {
+  font-size: 18px;
+}
+
+.auth-modal form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-modal input[type=password],
+.auth-modal input[type=email] {
+  padding: 8px;
+  margin: 8px;
+  font-size: 12px;
+  width: 250px;
+}
+
+
+}
