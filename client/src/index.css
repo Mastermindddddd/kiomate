@@ -568,6 +568,21 @@ html, body {
     border: none;
   }
 }
+
+
+@media (max-width: 400px) {
+  nav .nav-button {
+    background: linear-gradient(260deg,  #12c2e9,#c471ed,#f64f59);
+    background-color: rgb(255, 255, 255);
+    font-size: 12px;
+    padding: 8px px;
+    border-radius: 10px;
+    border: none;
+    margin: 10px;
+    margin-left: 0%;
+}
+
+}
 @media (max-width: 400px) {
   .logo-container h2 {
     background: linear-gradient(260deg, #12c2e9, #c471ed, #f64f59);
@@ -575,6 +590,6 @@ html, body {
     -webkit-text-fill-color: transparent;
     font-size: 25px;
     background-clip: text;
-    margin-right: 100px;
+    margin-right: 120px;
   }
 }
