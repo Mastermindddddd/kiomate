@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Picker from '@emoji-mart/react';
 import data from '@emoji-mart/data';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const ChatInput = ({ user, clickedUser, getUserMessages, getClickedUsersMessages }) => {
   const [textArea, setTextArea] = useState("")

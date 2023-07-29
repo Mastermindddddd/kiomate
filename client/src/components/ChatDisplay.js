@@ -2,6 +2,8 @@ import Chat from './Chat'
 import ChatInput from './ChatInput'
 import axios from 'axios'
 import {useState, useEffect} from "react"
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 const ChatDisplay = ({ user , clickedUser }) => {

@@ -3,6 +3,8 @@ import {useState} from 'react'
 import {useCookies} from 'react-cookie'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
+import dotenv from 'dotenv';
+dotenv.config();
 
 const OnBoarding = () => {
     const [cookies, setCookie, removeCookie] = useCookies(null)

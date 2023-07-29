@@ -2,6 +2,8 @@ import {useEffect, useState} from 'react'
 import ChatContainer from '../components/ChatContainer'
 import {useCookies} from 'react-cookie'
 import axios from 'axios'
+import dotenv from 'dotenv';
+dotenv.config();
 
 const Dashboard = () => {
     const [user, setUser] = useState(null)

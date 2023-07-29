@@ -4,6 +4,8 @@ import MatchesDisplay from './MatchesDisplay';
 import ChatDisplay from './ChatDisplay';
 import CardContainer from './CardContainer';
 import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const ChatContainer = ({ user }) => {
   const [clickedTab, setClickedTab] = useState('matches');
