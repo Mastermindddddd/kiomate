@@ -9,26 +9,12 @@ require('dotenv').config()
 const app = express()
 
 
-app.use(cors());
-
-app.use(cors());
-
 app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.send('Hello to my app');
-  });
-  
-  // Additional route with CORS headers set explicitly
-  app.get('/cors-fixed', (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
-    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
-  
-    res.send('CORS problem fixed :)');
-  });
-  
+app.use(
+    cors({ origin: "https://kiomate.online/" })
+  );
+
 const uri = process.env.URI
 // Default
 app.get('/', (req, res) => {
