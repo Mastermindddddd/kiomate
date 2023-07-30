@@ -48,7 +48,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
         return;
       }
 
-      const response = await axios.post(`https://kiomate-backend-production.up.railway.app/${isSignUp ? 'signup' : 'login'}`, { email, password });
+      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/${isSignUp ? 'signup' : 'login'}`, { email, password });
 
       setCookie('AuthToken', response.data.token);
       setCookie('UserId', response.data.userId);
