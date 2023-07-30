@@ -6,9 +6,9 @@ const jwt = require('jsonwebtoken')
 const cors = require('cors')
 const bcrypt = require('bcrypt')
 require('dotenv').config()
-
-
 const app = express()
+
+
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
