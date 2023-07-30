@@ -7,14 +7,15 @@ const cors = require('cors')
 const bcrypt = require('bcrypt')
 require('dotenv').config()
 
-const uri = process.env.URI
 
 const app = express()
 app.use(cors({
     origin: 'https://kiomate.online',
+    methods: 'POST',
+    allowedHeaders: 'Content-Type',
   }));
 app.use(express.json())
-
+const uri = process.env.URI
 // Default
 app.get('/', (req, res) => {
     res.json('Hello to my app')
