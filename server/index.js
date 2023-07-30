@@ -14,6 +14,15 @@ app.use(cors({
     methods: 'POST',
     allowedHeaders: 'Content-Type',
   }));
+
+  app.options('*', (req, res) => {
+    // Set the allowed HTTP methods and headers
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+    // Respond with a 200 status code to indicate successful pre-flight request
+    res.sendStatus(200);
+});
 app.use(express.json())
 const uri = process.env.URI
 // Default
