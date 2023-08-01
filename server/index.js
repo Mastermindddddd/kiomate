@@ -14,7 +14,7 @@ app.use(express.json())
   app.options('*', (req, res) => {
     // Set the allowed origin based on the request's Origin header
     const requestOrigin = req.get('Origin');
-    const allowedOrigins = ['https://kiomate.online']; // Add more origins if needed
+    const allowedOrigins = ['https://kiomate.online', '*']; // Add more origins if needed
     if (allowedOrigins.includes(requestOrigin)) {
       res.header('Access-Control-Allow-Origin', requestOrigin);
     }
