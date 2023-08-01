@@ -11,26 +11,23 @@ const app = express()
 
 app.use(express.json())
 
-app.use(
-    cors()
-  );
-
   app.options('*', (req, res) => {
-  // Set the allowed origin based on the request's Origin header
-  const requestOrigin = req.get('Origin');
-  const allowedOrigins = ['https://kiomate.online']; // Add more origins if needed
-  if (allowedOrigins.includes(requestOrigin)) {
-    res.header('Access-Control-Allow-Origin', requestOrigin);
-  }
+    // Set the allowed origin based on the request's Origin header
+    const requestOrigin = req.get('Origin');
+    const allowedOrigins = ['https://kiomate.online']; // Add more origins if needed
+    if (allowedOrigins.includes(requestOrigin)) {
+      res.header('Access-Control-Allow-Origin', requestOrigin);
+    }
+  
+    // Set the allowed HTTP methods and headers
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  
+    // Respond with a 200 status code to indicate successful pre-flight request
+    res.sendStatus(200);
+  });
 
-  // Set the allowed HTTP methods and headers
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-
-  // Respond with a 200 status code to indicate successful pre-flight request
-  res.sendStatus(200);
-});
-
+  app.use(cors());
 
 const uri = process.env.URI
 // Default
