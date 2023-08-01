@@ -4,7 +4,6 @@ import axios from 'axios'
 import {useState, useEffect} from "react"
 
 
-
 const ChatDisplay = ({ user , clickedUser }) => {
     const userId = user?.user_id
     const clickedUserId = clickedUser?.user_id

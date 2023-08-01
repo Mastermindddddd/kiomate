@@ -13,7 +13,7 @@ const CardContainer = () => {
 
   const getUser = async () => {
     try {
-      const response = await axios.get('/user', {
+      const response = await axios.get('https://backend-server.up.railway.app/user', {
         params: { userId }
       });
       setUser(response.data);

@@ -4,7 +4,6 @@ import {useCookies} from 'react-cookie'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
-
 const OnBoarding = () => {
     const [cookies, setCookie, removeCookie] = useCookies(null)
     const [error, setError] = useState(null);

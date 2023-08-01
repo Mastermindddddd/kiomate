@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
-
 const AuthModal = ({ setShowModal, isSignUp }) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -99,7 +98,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
                     required={true}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                 />}
-                <input className="secondary-button" type="submit" value={isSignUp ? 'SIGN UP': 'LOG IN'}/>
+                <input className="secondary-button" type="submit" value="SIGN UP"/>
                 <p>{error}</p>
             </form>
 

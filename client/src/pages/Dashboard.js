@@ -3,14 +3,11 @@ import ChatContainer from '../components/ChatContainer'
 import {useCookies} from 'react-cookie'
 import axios from 'axios'
 
-
-
 const Dashboard = () => {
     const [user, setUser] = useState(null)
     const [genderedUsers, setGenderedUsers] = useState(null)
     const [cookies] = useCookies(['user'])
 
-    
     const userId = cookies.UserId
 
 
