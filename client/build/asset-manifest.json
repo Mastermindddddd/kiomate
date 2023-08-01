@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0f825825.css",
+    "main.js": "/static/js/main.8cbcfbc4.js",
+    "static/media/masahiro-miyagi-AzK6UFPNYPc-unsplash.jpg": "/static/media/masahiro-miyagi-AzK6UFPNYPc-unsplash.6b5f25de4dcce3f696ac.jpg",
+    "static/media/xavier-portela-new-york-glow-7.jpg": "/static/media/xavier-portela-new-york-glow-7.018b998ec9fbdf1a3f4d.jpg",
+    "index.html": "/index.html",
+    "main.0f825825.css.map": "/static/css/main.0f825825.css.map",
+    "main.8cbcfbc4.js.map": "/static/js/main.8cbcfbc4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0f825825.css",
+    "static/js/main.8cbcfbc4.js"
+  ]
+}
