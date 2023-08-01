@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.0f825825.css",
-    "main.js": "/static/js/main.cd67ed42.js",
+    "main.css": "/static/css/main.bab75e9a.css",
+    "main.js": "/static/js/main.6924dad7.js",
     "static/media/masahiro-miyagi-AzK6UFPNYPc-unsplash.jpg": "/static/media/masahiro-miyagi-AzK6UFPNYPc-unsplash.6b5f25de4dcce3f696ac.jpg",
     "static/media/xavier-portela-new-york-glow-7.jpg": "/static/media/xavier-portela-new-york-glow-7.018b998ec9fbdf1a3f4d.jpg",
+    "static/media/react-spring_web.production.min.cjs": "/static/media/react-spring_web.production.min.5b3c0d125de2d6c73e1d.cjs",
     "index.html": "/index.html",
-    "main.0f825825.css.map": "/static/css/main.0f825825.css.map",
-    "main.cd67ed42.js.map": "/static/js/main.cd67ed42.js.map"
+    "main.bab75e9a.css.map": "/static/css/main.bab75e9a.css.map",
+    "main.6924dad7.js.map": "/static/js/main.6924dad7.js.map"
   },
   "entrypoints": [
-    "static/css/main.0f825825.css",
-    "static/js/main.cd67ed42.js"
+    "static/css/main.bab75e9a.css",
+    "static/js/main.6924dad7.js"
   ]
 }

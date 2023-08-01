@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import TinderCard from 'react-tinder-card';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
-import dotenv from 'dotenv';
-dotenv.config();
-
 
 const CardContainer = () => {
   const [user, setUser] = useState(null);
@@ -27,7 +24,7 @@ const CardContainer = () => {
 
   const getGenderedUsers = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/gendered-users`, {
+      const response = await axios.get('https://backend-server.up.railway.app/gendered-users', {
         params: { gender: user?.gender_interest }
       });
       setGenderedUsers(response.data);
@@ -48,7 +45,7 @@ const CardContainer = () => {
 
   const updateMatches = async (matchedUserId) => {
     try {
-      await axios.put(`${process.env.REACT_APP_SERVER_URL}/addmatch`, {
+      await axios.put('https://backend-server.up.railway.app/addmatch', {
         userId,
         matchedUserId
       });

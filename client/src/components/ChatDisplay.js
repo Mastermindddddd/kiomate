@@ -2,8 +2,7 @@ import Chat from './Chat'
 import ChatInput from './ChatInput'
 import axios from 'axios'
 import {useState, useEffect} from "react"
-import dotenv from 'dotenv';
-dotenv.config();
+
 
 
 const ChatDisplay = ({ user , clickedUser }) => {
@@ -14,7 +13,7 @@ const ChatDisplay = ({ user , clickedUser }) => {
 
     const getUsersMessages = async () => {
      try {
-            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/messages`, {
+            const response = await axios.get('https://backend-server.up.railway.app/messages', {
                 params: { userId: userId, correspondingUserId: clickedUserId}
             })
          setUsersMessages(response.data)
@@ -25,7 +24,7 @@ const ChatDisplay = ({ user , clickedUser }) => {
 
     const getClickedUsersMessages = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/messages`, {
+            const response = await axios.get('https://backend-server.up.railway.app/messages', {
                 params: { userId: clickedUserId , correspondingUserId: userId}
             })
             setClickedUsersMessages(response.data)

@@ -3,8 +3,7 @@ import {useState} from 'react'
 import {useCookies} from 'react-cookie'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
-import dotenv from 'dotenv';
-dotenv.config();
+
 
 const OnBoarding = () => {
     const [cookies, setCookie, removeCookie] = useCookies(null)
@@ -37,7 +36,7 @@ const OnBoarding = () => {
         console.log('submitted')
         e.preventDefault()
         try {
-            const response = await axios.put(`${process.env.REACT_APP_SERVER_URL}/user`, {formData})
+            const response = await axios.put('https://backend-server.up.railway.app/user', {formData})
             console.log(response)
             const success = response.status === 200
             if (success) navigate('/Dashboard')

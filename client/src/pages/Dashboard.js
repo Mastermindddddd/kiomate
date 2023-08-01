@@ -2,8 +2,8 @@ import {useEffect, useState} from 'react'
 import ChatContainer from '../components/ChatContainer'
 import {useCookies} from 'react-cookie'
 import axios from 'axios'
-import dotenv from 'dotenv';
-dotenv.config();
+
+
 
 const Dashboard = () => {
     const [user, setUser] = useState(null)
@@ -16,7 +16,7 @@ const Dashboard = () => {
 
     const getUser = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/user`, {
+            const response = await axios.get('https://backend-server.up.railway.app/user', {
                 params: {userId}
             })
             setUser(response.data)
@@ -26,7 +26,7 @@ const Dashboard = () => {
     }
     const getGenderedUsers = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/gendered-users`, {
+            const response = await axios.get('https://backend-server.up.railway.app/gendered-users', {
                 params: {gender: user?.gender_interest}
             })
             setGenderedUsers(response.data)

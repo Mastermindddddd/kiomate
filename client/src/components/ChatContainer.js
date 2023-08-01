@@ -4,8 +4,6 @@ import MatchesDisplay from './MatchesDisplay';
 import ChatDisplay from './ChatDisplay';
 import CardContainer from './CardContainer';
 import axios from 'axios';
-import dotenv from 'dotenv';
-dotenv.config();
 
 const ChatContainer = ({ user }) => {
   const [clickedTab, setClickedTab] = useState('matches');
@@ -21,7 +19,7 @@ const ChatContainer = ({ user }) => {
     // Fetch or calculate filteredGenderedUsers data
     const fetchFilteredGenderedUsers = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/gendered-users`, {
+        const response = await axios.get('https://backend-server.up.railway.app/gendered-users', {
           params: { gender: user?.gender_interest }
         });
         setFilteredGenderedUsers(response.data);
