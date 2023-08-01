@@ -17,7 +17,7 @@ const ChatInput = ({ user, clickedUser, getUserMessages, getClickedUsersMessages
       };
   
       try {
-        await axios.post('https://backend-server.up.railway.app/message', { message })
+        await axios.post('http://localhost:8000/message', { message })
         getUserMessages()
         getClickedUsersMessages()
         setTextArea("")
