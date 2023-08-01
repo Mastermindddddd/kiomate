@@ -35,7 +35,7 @@ const OnBoarding = () => {
         console.log('submitted')
         e.preventDefault()
         try {
-            const response = await axios.put('https://backend-server.up.railway.app/user', {formData})
+            const response = await axios.put('https://kiomate.vercel.app//user', {formData})
             console.log(response)
             const success = response.status === 200
             if (success) navigate('/Dashboard')
