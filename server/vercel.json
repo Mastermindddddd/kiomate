@@ -1,0 +1,9 @@
+{
+    "name": "kiomate",
+    "version": "1.0.0",
+    "headers": {
+      "Access-Control-Allow-Origin": "https:kiomate.online",
+      "Access-Control-Allow-Methods": "*"
+    }
+  }
+  
