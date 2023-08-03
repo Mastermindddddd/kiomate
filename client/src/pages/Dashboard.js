@@ -13,7 +13,7 @@ const Dashboard = () => {
 
     const getUser = async () => {
         try {
-            const response = await axios.get('https://kiomate-server.vercel.app//user', {
+            const response = await axios.get('https://kiomate-server.vercel.app/user', {
                 params: {userId}
             })
             setUser(response.data)
