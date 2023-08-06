@@ -17,7 +17,7 @@ const ChatInput = ({ user, clickedUser, getUserMessages, getClickedUsersMessages
       };
   
       try {
-        await axios.post('https://kiomate-server.vercel.app/message', { message })
+        await axios.post('https://dark-ruby-mackerel-gown.cyclic.app/message', { message })
         getUserMessages()
         getClickedUsersMessages()
         setTextArea("")
