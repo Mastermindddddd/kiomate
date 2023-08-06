@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 })
 
 // Sign up to the Database
-app.post('signup', async (req, res) => {
+app.post('/signup', async (req, res) => {
     const client = new MongoClient(uri)
     const {email, password} = req.body
 
