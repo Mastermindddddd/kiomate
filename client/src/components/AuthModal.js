@@ -47,8 +47,21 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
 
       const response = await axios.post(`https://dark-ruby-mackerel-gown.cyclic.app/${isSignUp ? 'signup' : 'login'}`, { email, password });
 
-      setCookie('AuthToken', response.data.token, { sameSite: 'None', secure: true });
-      setCookie('UserId', response.data.userId, { sameSite: 'None', secure: true });
+      
+
+      res.cookie('AuthToken', response.data.token, { //send refresh token to client after log in
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000, //1 day
+        secure: true,
+        sameSite:'none'
+      })
+
+      res.cookie('UserId', response.data.userId, { //send refresh token to client after log in
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000, //1 day
+        secure: true,
+        sameSite:'none'
+      })
 
 
       const success = response.status === 201;
