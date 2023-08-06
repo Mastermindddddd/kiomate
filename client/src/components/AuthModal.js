@@ -45,7 +45,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
         return;
       }
 
-      const response = await axios.post(`https://application-k91t-mfklgkz6d-mastermindddddd.vercel.app/${isSignUp ? 'signup' : 'login'}`, { email, password });
+      const response = await axios.post(`https://kiomate-server.vercel.app/${isSignUp ? 'signup' : 'login'}`, { email, password });
 
       setCookie('AuthToken', response.data.token);
       setCookie('UserId', response.data.userId);
