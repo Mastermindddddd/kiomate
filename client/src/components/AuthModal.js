@@ -55,13 +55,13 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       setCookie('AuthToken', response.data.token, {
         maxAge: 24 * 60 * 60 * 1000, // 1 day
         secure: true,
-        sameSite: 'none',
+        sameSite: 'None',
       });
 
       setCookie('UserId', response.data.userId, {
         maxAge: 24 * 60 * 60 * 1000, // 1 day
         secure: true,
-        sameSite: 'none',
+        sameSite: 'None',
       });
 
       if (isSignUp) {
