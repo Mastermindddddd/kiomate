@@ -52,28 +52,19 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
         { email, password }
       );
 
-      if (!cookies.AuthToken) {
-  // User is not logged in, make API call
-  const response = await axios.post(
-    `https://dark-ruby-mackerel-gown.cyclic.app/${isSignUp ? 'signup' : 'login'}`,
-    { email, password }
-  );
-
   setCookie('AuthToken', response.data.token, {
+    path: '/',
     maxAge: 24 * 60 * 60 * 1000, // 1 day
     secure: true,
     sameSite: 'None',
   });
 
   setCookie('UserId', response.data.userId, {
+    path: '/',
     maxAge: 24 * 60 * 60 * 1000, // 1 day
     secure: true,
     sameSite: 'None',
   });
-} else {
-  // User is already logged in, redirect to home page
-  navigate('/');
-}
 
       if (isSignUp) {
         navigate('/OnBoarding');
