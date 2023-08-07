@@ -1,10 +1,10 @@
-import React, { useState } from 'react'; // Import React
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
 const AuthModal = ({ setShowModal, isSignUp }) => {
-  const [email, setEmail] = useState(''); // Initialize state with empty strings
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState(null);
@@ -52,17 +52,28 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
         { email, password }
       );
 
-      setCookie('AuthToken', response.data.token, {
-        maxAge: 24 * 60 * 60 * 1000, // 1 day
-        secure: true,
-        sameSite: 'None',
-      });
-
-      setCookie('UserId', response.data.userId, {
-        maxAge: 24 * 60 * 60 * 1000, // 1 day
-        secure: true,
-        sameSite: 'None',
-      });
+      if (!cookies.AuthToken) {
+        // User is not logged in, make API call
+        const response = await axios.post(
+          `https://dark-ruby-mackerel-gown.cyclic.app/${isSignUp ? 'signup' : 'login'}`,
+          { email, password }
+        );
+      
+        setCookie('AuthToken', response.data.token, {
+          maxAge: 24 * 60 * 60 * 1000, // 1 day
+          secure: true,
+          sameSite: 'None',
+        });
+      
+        setCookie('UserId', response.data.userId, {
+          maxAge: 24 * 60 * 60 * 1000, // 1 day
+          secure: true,
+          sameSite: 'None',
+        });
+      } else {
+        // User is already logged in, redirect to home page
+        navigate('/');
+      }
 
       if (isSignUp) {
         navigate('/OnBoarding');
