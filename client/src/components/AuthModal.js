@@ -1,16 +1,16 @@
-import { useState } from 'react';
+import React, { useState } from 'react'; // Import React
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
 const AuthModal = ({ setShowModal, isSignUp }) => {
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [confirmPassword, setConfirmPassword] = useState(null);
+  const [email, setEmail] = useState(''); // Initialize state with empty strings
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState(null);
-  const [cookies, setCookie, removeCookie] = useCookies(null);
+  const [cookies, setCookie, removeCookie] = useCookies(['AuthToken', 'UserId']); // Provide cookie names
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleClick = () => {
     setShowModal(false);
@@ -22,8 +22,8 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
   };
 
   const validatePasswordStrength = (password) => {
-    // Add your password strength criteria here, e.g., minimum length, uppercase, lowercase, special characters, etc.
-    return password && password.length >= 8; // For example, at least 8 characters
+    // Add your password strength criteria here
+    return password && password.length >= 8;
   };
 
   const handleSubmit = async (e) => {
@@ -45,82 +45,98 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
         return;
       }
 
-      const response = await axios.post(`https://dark-ruby-mackerel-gown.cyclic.app/${isSignUp ? 'signup' : 'login'}`, { email, password });
+      const response = await axios.post(
+        `https://dark-ruby-mackerel-gown.cyclic.app/${
+          isSignUp ? 'signup' : 'login'
+        }`,
+        { email, password }
+      );
 
-      
-
-      res.cookie('AuthToken', response.data.token, { //send refresh token to client after log in
+      setCookie('AuthToken', response.data.token, {
         httpOnly: true,
-        maxAge: 24 * 60 * 60 * 1000, //1 day
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
         secure: true,
-        sameSite:'none'
-      })
+        sameSite: 'none',
+      });
 
-      res.cookie('UserId', response.data.userId, { //send refresh token to client after log in
+      setCookie('UserId', response.data.userId, {
         httpOnly: true,
-        maxAge: 24 * 60 * 60 * 1000, //1 day
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
         secure: true,
-        sameSite:'none'
-      })
+        sameSite: 'none',
+      });
 
+      if (isSignUp) {
+        navigate('/OnBoarding');
+      } else {
+        navigate('/Dashboard');
+      }
 
-      const success = response.status === 201;
-      if (success && isSignUp) navigate('/OnBoarding');
-      if (success && !isSignUp) navigate('/Dashboard');
-
-      window.location.reload();
+      // You might not need the following line as navigating to a new page will trigger a reload
+      // window.location.reload();
 
     } catch (error) {
       if (error.response && error.response.status === 409) {
         setError('User already exists. Please log in');
       } else {
-        console.log(error);
+        console.error(error);
       }
     }
   };
 
-    return (
-        <div className="auth-modal">
-            <div className="close-icon" onClick={handleClick}>x</div>
+  return (
+    <div className="auth-modal">
+      <div className="close-icon" onClick={handleClick}>
+        x
+      </div>
 
-            <h2>{isSignUp ? 'CREATE ACCOUNT': 'LOG IN'}</h2>
-            <p>By logging in, you acknowledge that you have read and agree to our Terms of Service. For more information on how we handle your data, please refer to our Privacy Policy and Cookie Policy.</p>
-            <form onSubmit={handleSubmit}>
-                <h1>Email</h1>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="email@example.com"
-                    required={true}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <h1>password</h1>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Enter your password"
-                    required={true}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                {isSignUp && <input
-                    type="password"
-                    id="password-check"
-                    name="password-check"
-                    placeholder="confirm password"
-                    required={true}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                />}
-                <input className="secondary-button" type="submit" value="SIGN UP"/>
-                <p>{error}</p>
-            </form>
+      <h2>{isSignUp ? 'CREATE ACCOUNT' : 'LOG IN'}</h2>
+      <p>
+        By logging in, you acknowledge that you have read and agree to our
+        Terms of Service. For more information on how we handle your data,
+        please refer to our Privacy Policy and Cookie Policy.
+      </p>
+      <form onSubmit={handleSubmit}>
+        <h1>Email</h1>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="email@example.com"
+          required={true}
+          value={email} // Bind value to state
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <h1>Password</h1> {/* Use consistent capitalization */}
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          required={true}
+          value={password} // Bind value to state
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {isSignUp && (
+          <input
+            type="password"
+            id="password-check"
+            name="password-check"
+            placeholder="Confirm password"
+            required={true}
+            value={confirmPassword} // Bind value to state
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        )}
+        <input className="secondary-button" type="submit" value="SIGN UP" />
+        <p>{error}</p>
+      </form>
 
-            <hr/>
-            
-            <h2>WELCOME</h2>
+      <hr />
 
-        </div>
-    )
-}
-export default AuthModal
+      <h2>WELCOME</h2>
+    </div>
+  );
+};
+
+export default AuthModal;
