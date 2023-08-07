@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
-import Cookie from 'js-cookie';
+import { useCookies,Cookie } from 'react-cookie';
 
 const AuthModal = ({ setShowModal, isSignUp }) => {
   const [email, setEmail] = useState('');
