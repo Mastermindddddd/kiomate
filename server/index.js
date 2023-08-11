@@ -5,13 +5,25 @@ const {v4: uuidv4} = require('uuid')
 const jwt = require('jsonwebtoken')
 const cors = require('cors')
 const bcrypt = require('bcrypt')
+const session = require('express-session')
 require('dotenv').config()
 
 // Import the allowCors middleware
 const allowCors = require('./allowCors'); // Change the path accordingly
 
 const app = express();
-
+app.use(
+    session({
+        resave: false,
+        saveUninitialized: false,
+        secret: 'session',
+        cookie: {
+            maxAge: 24 * 60 * 60 * 1000,
+            sameSite: "none",
+            secure: true,
+        },
+    })
+)
 
 app.use(express.json())
 
@@ -37,6 +49,9 @@ app.post('/signup', async (req, res) => {
         const users = database.collection('users')
 
         const existingUser = await users.findOne({email})
+
+        const name = req.body.name;
+        req.session.name = name
 
         if (existingUser) {
             return res.status(409).send('User already exists. Please login')
@@ -78,6 +93,9 @@ app.post('/login', async (req, res) => {
 
         const correctPassword = await bcrypt.compare(password, user.hashed_password)
 
+        const name = req.body.name;
+        req.session.name = name
+
         if (user && correctPassword) {
             const token = jwt.sign(user, email, {
                 expiresIn: 60 * 24
@@ -107,6 +125,8 @@ app.get('/user', async (req, res) => {
         const query = {user_id: userId}
         const user = await users.findOne(query)
         res.send(user)
+        const name = req.body.name;
+        req.session.name = name
 
     } finally {
         await client.close()
@@ -129,6 +149,8 @@ app.put('/addmatch', async (req, res) => {
         }
         const user = await users.updateOne(query, updateDocument)
         res.send(user)
+        const name = req.body.name;
+        req.session.name = name
     } finally {
         await client.close()
     }
@@ -159,6 +181,9 @@ app.get('/users', async (req, res) => {
 
         res.json(foundUsers)
 
+        const name = req.body.name;
+        req.session.name = name
+
     } finally {
         await client.close()
     }
@@ -176,6 +201,9 @@ app.get('/gendered-users', async (req, res) => {
         const query = {gender_identity: {$eq: gender}}
         const foundUsers = await users.find(query).toArray()
         res.json(foundUsers)
+
+        const name = req.body.name;
+        req.session.name = name
 
     } finally {
         await client.close()
@@ -220,6 +248,8 @@ app.put('/user', async (req, res) => {
         const insertedUser = await users.updateOne(query, updateDocument)
 
         res.json(insertedUser)
+        const name = req.body.name;
+        req.session.name = name
 
     } finally {
         await client.close()
@@ -241,6 +271,8 @@ app.get('/messages', async (req, res) => {
         }
         const foundMessages = await messages.find(query).toArray()
         res.send(foundMessages)
+        const name = req.body.name;
+        req.session.name = name
     } finally {
         await client.close()
     }
@@ -258,6 +290,9 @@ app.post('/message', async (req, res) => {
 
         const insertedMessage = await messages.insertOne(message)
         res.send(insertedMessage)
+
+        const name = req.body.name;
+        req.session.name = name
     } finally {
         await client.close()
     }
