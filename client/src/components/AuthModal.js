@@ -54,8 +54,13 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
         { email, password }
       );
 
-      setCookie('AuthToken', response.data.token);
-      setCookie('UserId', response.data.userId);
+      setCookie('AuthToken', response.data.token, {
+        SameSite: 'None',
+      });
+      
+      setCookie('UserId', response.data.userId, {
+        SameSite: 'None',
+      });
 
       if (isSignUp) {
         navigate('/OnBoarding');
