@@ -26,19 +26,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
     return password && password.length >= 8;
   };
 
-  setCookie('AuthToken', response.data.token, {
-    path: '/',
-    maxAge: 24 * 60 * 60 * 1000, // 1 day
-    sameSite: 'none',
-    secure: true
-  });
-
-  setCookie('UserId', response.data.userId, {
-    path: '/',
-    maxAge: 24 * 60 * 60 * 1000, // 1 day
-    sameSite: 'none',
-    secure: true
-  });
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -67,7 +55,19 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
         {withCredentials: true}
       );
 
-  
+      setCookie('AuthToken', response.data.token, {
+        path: '/',
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
+        sameSite: 'none',
+        secure: true
+      });
+    
+      setCookie('UserId', response.data.userId, {
+        path: '/',
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
+        sameSite: 'none',
+        secure: true
+      });
 
       if (isSignUp) {
         navigate('/OnBoarding');
