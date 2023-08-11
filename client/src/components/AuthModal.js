@@ -51,23 +51,11 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
         `https://dark-ruby-mackerel-gown.cyclic.app/${
           isSignUp ? 'signup' : 'login'
         }`,
-        { email, password },
-        {withCredentials: true}
+        { email, password }
       );
 
-      setCookie('AuthToken', response.data.token, {
-        path: '/',
-        maxAge: 24 * 60 * 60 * 1000, // 1 day
-        sameSite: 'lax',
-
-      });
-    
-      setCookie('UserId', response.data.userId, {
-        path: '/',
-        maxAge: 24 * 60 * 60 * 1000, // 1 day
-        sameSite: 'lax',
-      
-      });
+      setCookie('AuthToken', response.data.token);
+      setCookie('UserId', response.data.userId);
 
       if (isSignUp) {
         navigate('/OnBoarding');
