@@ -58,14 +58,14 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       setCookie('AuthToken', response.data.token, {
         path: '/',
         maxAge: 24 * 60 * 60 * 1000, // 1 day
-        sameSite: 'none',
+        sameSite: 'lax',
         secure: true
       });
     
       setCookie('UserId', response.data.userId, {
         path: '/',
         maxAge: 24 * 60 * 60 * 1000, // 1 day
-        sameSite: 'none',
+        sameSite: 'lax',
         secure: true
       });
 
