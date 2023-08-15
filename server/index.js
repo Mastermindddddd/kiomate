@@ -7,15 +7,15 @@ const cors = require('cors')
 const bcrypt = require('bcrypt')
 require('dotenv').config()
 
+
+const uri = process.env.URI
 // Import the allowCors middleware
 const allowCors = require('./allowCors'); // Change the path accordingly
 
-const app = express();
-
+const app = express()
+app.use(cors())
 app.use(express.json())
 
-app.use(allowCors);
-const uri = process.env.URI
 // Default
 app.get('/', (req, res) => {
     res.json('Hello to my app')
@@ -35,7 +35,6 @@ app.post('/signup', async (req, res) => {
         const users = database.collection('users')
 
         const existingUser = await users.findOne({email})
-
 
         if (existingUser) {
             return res.status(409).send('User already exists. Please login')
@@ -106,6 +105,7 @@ app.get('/user', async (req, res) => {
         const query = {user_id: userId}
         const user = await users.findOne(query)
         res.send(user)
+
     } finally {
         await client.close()
     }
@@ -157,7 +157,6 @@ app.get('/users', async (req, res) => {
 
         res.json(foundUsers)
 
-
     } finally {
         await client.close()
     }
@@ -175,7 +174,6 @@ app.get('/gendered-users', async (req, res) => {
         const query = {gender_identity: {$eq: gender}}
         const foundUsers = await users.find(query).toArray()
         res.json(foundUsers)
-
 
     } finally {
         await client.close()
@@ -208,7 +206,6 @@ app.put('/user', async (req, res) => {
                 about: formData.about,
                 matches: formData.matches,
                 location: formData.location,
-                show_users: formData.show_users,
                 hobbies: formData.hobbies,
                 interests: formData.interests,
                 idealdate: formData.idealdate,
@@ -258,7 +255,6 @@ app.post('/message', async (req, res) => {
 
         const insertedMessage = await messages.insertOne(message)
         res.send(insertedMessage)
-
     } finally {
         await client.close()
     }
