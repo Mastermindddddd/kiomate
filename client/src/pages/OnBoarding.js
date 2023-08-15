@@ -13,6 +13,7 @@ const OnBoarding = () => {
         dob_day: "31",
         dob_month: "12",
         dob_year: new Date().getFullYear().toString(),
+        age: "",
         show_gender: false,
         gender_identity: "man",
         gender_interest: "woman",
