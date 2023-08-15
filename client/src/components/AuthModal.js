@@ -57,14 +57,11 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       setCookie('AuthToken', response.data.token);
       setCookie('UserId', response.data.userId);
 
-      if (isSignUp) {
-        navigate('/OnBoarding');
-      } else {
-        navigate('/Dashboard');
-      }
+      const success = response.status === 201
+      if (success && isSignUp) navigate ('/onboarding')
+      if (success && !isSignUp) navigate ('/dashboard')
 
-      // You might not need the following line as navigating to a new page will trigger a reload
-      // window.location.reload();
+      window.location.reload()
 
     } catch (error) {
       if (error.response && error.response.status === 409) {
