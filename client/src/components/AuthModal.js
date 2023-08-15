@@ -55,12 +55,17 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       );
 
       setCookie('AuthToken', response.data.token, {
-        SameSite: 'None',
+        expires: new Date(Date.now() + 86400 * 1000),
+        path: "/",
+        sameSite: 'none',
+        secure: true
       });
-      
-      setCookie('UserId', response.data.userId, {
-        SameSite: 'None',
-      });
+    setCookie('UserId', response.data.userId, {
+        expires: new Date(Date.now() + 86400 * 1000),
+        path: "/",
+        sameSite: 'none',
+        secure: true
+    });
 
       if (isSignUp) {
         navigate('/OnBoarding');
