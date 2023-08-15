@@ -54,18 +54,8 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
         { email, password }
       );
 
-      setCookie('AuthToken', response.data.token, {
-        expires: new Date(Date.now() + 86400 * 1000),
-        path: "/",
-        sameSite: 'none',
-        secure: true
-      });
-    setCookie('UserId', response.data.userId, {
-        expires: new Date(Date.now() + 86400 * 1000),
-        path: "/",
-        sameSite: 'none',
-        secure: true
-    });
+      setCookie('AuthToken', response.data.token);
+      setCookie('UserId', response.data.userId);
 
       if (isSignUp) {
         navigate('/OnBoarding');
@@ -129,7 +119,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         )}
-        <input className="secondary-button" type="submit" value="SIGN UP" />
+        <input className="secondary-button" type="submit" value={isSignUp ? 'SIGN UP' : 'LOG IN'} />
         <p>{error}</p>
       </form>
 
