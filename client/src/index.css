@@ -378,7 +378,7 @@ html, body {
   }
 
   .displayed-message {
-    font-size: 40px;
+    font-size: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -399,7 +399,7 @@ html, body {
     border: none;
     background-color: transparent;
     font-size: 20px;
-    margin: 0 10px;
+    margin: 0 px;
     padding: 10px;
     cursor: pointer;
     color: #888888;
@@ -475,11 +475,25 @@ html, body {
 }
 
 @media screen and (max-width: 700px) {
+  .chat-container {
+    width: 350px;
+    height: 717x;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+    position: relative;
+    isolation: isolate;
+    background-image: url('images/xavier-portela-new-york-glow-7.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
   .chat-container .profile,
   .chat-container .log-out-icon {
     display: flex;
     align-items: center;
-    padding: 8px;
+    padding: 7px;
     color: rgb(255, 255, 255);
   }
   
@@ -575,7 +589,7 @@ html, body {
 }
 
 /*------- code for responsiveness -----------*/
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .logo-container h2 {
     background: linear-gradient(260deg, #12c2e9, #c471ed, #f64f59);
     -webkit-background-clip: text;
@@ -586,7 +600,7 @@ html, body {
   }
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   nav .nav-button {
     background: linear-gradient(260deg,  #12c2e9,#c471ed,#f64f59);
     background-color: rgb(255, 255, 255);
@@ -600,13 +614,13 @@ html, body {
 
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .home h1 {
     font-size: 22px;
 }
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .home .primary-button {
     color: rgb(255,255,255);
     text-transform: uppercase;
@@ -619,7 +633,7 @@ html, body {
 }
 
 
-@media (max-width: 400px) {
+@media screen and (max-width: 400px) {
   nav .nav-button {
     background: linear-gradient(260deg,  #12c2e9,#c471ed,#f64f59);
     background-color: rgb(255, 255, 255);
@@ -632,7 +646,7 @@ html, body {
 }
 
 }
-@media (max-width: 400px) {
+@media screen and (max-width: 400px) {
   .logo-container h2 {
     background: linear-gradient(260deg, #12c2e9, #c471ed, #f64f59);
     -webkit-background-clip: text;
@@ -643,7 +657,7 @@ html, body {
   }
 }
 
-@media (max-width: 700px) {
+@media screen and (max-width: 700px) {
   .auth-modal {
     position: absolute;
     left: 0;
@@ -658,7 +672,7 @@ html, body {
 }
 
 }
-@media (max-width: 700px) {
+@media screen and (max-width: 700px) {
   .auth-modal {
     position: absolute;
     left: 0;
