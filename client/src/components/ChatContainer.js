@@ -35,7 +35,9 @@ const ChatContainer = ({ user }) => {
 
   return (
     <div className="chat-container">
+      <div className='chat-header'>
       <ChatHeader user={user} />
+      </div>
 
       <div className="tab-container">
         <button

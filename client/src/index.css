@@ -473,6 +473,32 @@ html, body {
   }
   
 }
+
+@media screen and (max-width: 700px) {
+  .chat-container .profile,
+  .chat-container .log-out-icon {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    color: rgb(255, 255, 255);
+  }
+  
+
+  .chat-container .tab {
+    font-size: 12px;
+    margin: 0 5px;
+    padding: 5px;
+  }
+  
+  .displayed-message {
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+}
   
   
 /*-------- Chat Display --------*/
