@@ -450,6 +450,29 @@ html, body {
       margin: 0;
     }
   }
+
+  /* Media Query for Small Screens */
+@media screen and (max-width: 1000px) {
+  .chat-container .chat-container-header {
+    width: 100%;
+    padding: 0 10px;
+  }
+  
+  .chat-container .tab {
+    font-size: 12px;
+    margin: 0 5px;
+    padding: 5px;
+  }
+  
+  .displayed-message {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+}
   
   
 /*-------- Chat Display --------*/
