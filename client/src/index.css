@@ -237,12 +237,8 @@ nav .logo-container .logo {
 
 
 /*-------- Dashboard  --------*/
-.dashboard {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .dashboard .swipe-container {
+
+  .swipe-container {
     width: 100vh;
     display: flex;
     flex-direction: column;
@@ -344,7 +340,98 @@ nav .logo-container .logo {
   .card-buttons button:hover {
     background-color: #ff3333;
   }
+
+  @media screen and (max-width: 1000px){
+    .swipe-container {
+      width: 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 300px;
+      justify-content: space-between;
+    }
+    
+    .card-container {
+      /* Remove the duplicate flex-direction and set to column */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center items horizontally */
+      width: 100vh; /* Adjust the width as needed */
+      margin-top: 0;
+    }
+    
+    .card {
+      display: flex;
+      align-items: flex-start;
+      left: 75px;
+      position: relative;
+      width: 350px;
+      height: 600px; /* Adjust the height as needed */
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      margin-left: 300px;
+    }
+    
+    .card-info-container {
+      position: absolute;
+      top: 600px; /* Change top position */
+      left: 0px; /* Adjust left to align with the card */
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      width: 350px; /* Adjust the width as needed */
+      height: 600px; /* Adjust the height as needed */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      border-radius: 20px;
+    }
+    
   
+    
+  }
+
+  
+  @media screen and (max-width: 500px) {
+    
+    .card-container {
+      /* Remove the duplicate flex-direction and set to column */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center items horizontally */
+      width: 150px; /* Adjust the width as needed */
+      margin-top: 0;
+    }
+    
+    .card {
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+      width: 350px;
+      height: 600px; /* Adjust the height as needed */
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+  
+    }
+    
+    .card-info-container {
+      position: absolute;
+      top: 600px; /* Change top position */
+      left: 0px; /* Adjust left to align with the card */
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      width: 250px; /* Adjust the width as needed */
+      height: 600px; /* Adjust the height as needed */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      border-radius: 20px;
+    }
+    
+  }
 
 /*-------- Chat Container --------*/
 html, body {
@@ -476,8 +563,8 @@ html, body {
 
 @media screen and (max-width: 700px) {
   .chat-container {
-    width: 365px;
-    height: 700x;
+    width: 100vh;
+    height: 100vh;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -495,6 +582,16 @@ html, body {
     align-items: center;
     padding: 7px;
     color: rgb(255, 255, 255);
+    font-size: 10px;
+    margin-right: 20px;
+  }
+
+  .img-container {
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 5px;
   }
   
 
