@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import TinderCard from 'react-tinder-card';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 
@@ -85,54 +84,47 @@ const CardContainer = () => {
     <div className="swipe-container">
       <div className="card-container">
         {currentGenderedUser && (
-          <TinderCard
-            key={currentGenderedUser.user_id}
+          <div
+            style={{ backgroundImage: `url(${currentGenderedUser.url})` }}
+            className="card"
           >
-            
-
-            <div
-              style={{ backgroundImage: `url(${currentGenderedUser.url})` }}
-              className="card"
-            >
-              <div className="card-info-container">
-                <h3>{currentGenderedUser.first_name}</h3>
-                {user?.show_gender && (
-                  <p>Gender: {currentGenderedUser.gender_identity}</p>
-                )}
-                <p>About: {currentGenderedUser.about}</p>
-                <p>Location: {currentGenderedUser.location}</p>
-                <p>Hobbies: {currentGenderedUser.hobbies}</p>
-                <p>Interests: {currentGenderedUser.interests}</p>
-                <p>Ideal Date: {currentGenderedUser.idealdate}</p>
-                <p>Qualities: {currentGenderedUser.qualities}</p>
-                <p>Deal Breaker: {currentGenderedUser.dealbreaker}</p>
-              </div>
-              <div className="card-buttons">
-                <div className='connect-button'>
+            <div className="card-info-container">
+              <h3>{currentGenderedUser.first_name}</h3>
+              {user?.show_gender && (
+                <p>Gender: {currentGenderedUser.gender_identity}</p>
+              )}
+              <p>About: {currentGenderedUser.about}</p>
+              <p>Location: {currentGenderedUser.location}</p>
+              <p>Hobbies: {currentGenderedUser.hobbies}</p>
+              <p>Interests: {currentGenderedUser.interests}</p>
+              <p>Ideal Date: {currentGenderedUser.idealdate}</p>
+              <p>Qualities: {currentGenderedUser.qualities}</p>
+              <p>Deal Breaker: {currentGenderedUser.dealbreaker}</p>
+            </div>
+            <div className="card-buttons">
+              <div className='connect-button'>
                 {message && <div className="message">{message}</div>}
                 <button onClick={() => handleVibe(currentGenderedUser.user_id, currentGenderedUser.first_name)}>
                   connect
                 </button>
+              </div>
+              <div className="navigation-buttons">
+                <div className='back-button'>
+                  <button onClick={handleBack} disabled={currentIndex === 0}>
+                    Back
+                  </button>
                 </div>
-                <div className="navigation-buttons">
-        <div className='back-button'>
-          <button onClick={handleBack} disabled={currentIndex === 0}>
-            Back
-          </button>
-        </div>
-        <div className='next-button'>
-          <button onClick={handleNext} disabled={currentIndex === filteredGenderedUsers.length - 1}>
-            Next
-          </button>
-        </div>
-      </div>
+                <div className='next-button'>
+                  <button onClick={handleNext} disabled={currentIndex === filteredGenderedUsers.length - 1}>
+                    Next
+                  </button>
+                </div>
               </div>
             </div>
-          </TinderCard>
+          </div>
         )}
       </div>
     </div>
-    
   );
 };
 
