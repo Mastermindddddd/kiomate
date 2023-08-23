@@ -629,8 +629,8 @@ html, body {
 }
 
 .match-card {
-  background: #ffd8da;
-    width: 1780px;
+  background: #c9101a;
+  
     height: 75px;
     display: flex;
     align-items: center;
@@ -654,7 +654,17 @@ html, body {
     width: fit-content;
     border-radius: 10px;
 }
-
+@media screen and (max-width: 800px) {
+  .match-card {
+    background: #c9101a;
+  
+      height: 45px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      border-radius: 20px;
+  }
+}
 /*-------- Chat Input --------*/
 .chat-input {
   padding: 20px;
