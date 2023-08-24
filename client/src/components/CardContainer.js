@@ -81,7 +81,6 @@ const CardContainer = () => {
   const currentGenderedUser = filteredGenderedUsers[currentIndex];
 
   return (
-    <div className="swipe-container">
       <div className="card-container">
         {currentGenderedUser && (
           <div
@@ -124,7 +123,6 @@ const CardContainer = () => {
           </div>
         )}
       </div>
-    </div>
   );
 };
 

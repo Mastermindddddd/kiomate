@@ -238,21 +238,9 @@ nav .logo-container .logo {
 
 /*-------- Dashboard  --------*/
 
-  .swipe-container {
-    width: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    justify-content: space-between;
-  }
-  
-  
-  
-  
   .card-container {
     position: relative;
-    width: 100vh; /* Adjust the width as needed */
+    width: 0px; /* Adjust the width as needed */
     margin-top: 0;
     
   }
@@ -341,25 +329,94 @@ nav .logo-container .logo {
     background-color: #ff3333;
   }
 
-
-  
-  @media screen and (max-width: 900px) {
-    
-    .swipe-container {
-      width: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100vh;
-      justify-content: space-between;
-    }
-    
-    
-    
+  @media screen and (max-width: 1000px) {
     
     .card-container {
       position: relative;
-      width: 100vh; /* Adjust the width as needed */
+      width: 300px; /* Adjust the width as needed */
+      margin-top: 0;
+      
+    }
+    
+    .card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      /* Adjust the height as needed */
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      margin-left: 100px;
+    }
+  
+    
+    
+    .card-info-container {
+      display: none;
+    }
+    
+    .card-buttons {
+      position: absolute;
+      bottom: 20px;
+      right: 50px;
+    }
+  
+    .message {
+      font-size: 18px;
+      color: #261ad1;
+    }
+    
+    .card-buttons button {
+      padding: 10px 20px;
+      background: linear-gradient(260deg, #12c2e9, #c471ed, #f64f59);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .connect-button {
+      -webkit-background-clip: text;
+      font-size: 30px;
+      background-clip: text;
+      float: left;
+      margin-left: 0px;
+    }
+    
+    
+    .back-button {
+      /* Add your existing styles */
+      -webkit-background-clip: text;
+      font-size: 30px;
+      background-clip: text;
+      float: left;
+      margin-right: 0px;
+  
+      
+    }
+    
+    .next-button {
+      /* Add your existing styles */
+      -webkit-background-clip: text;
+      font-size: 30px;
+      background-clip: text;
+      float: right;
+      margin-left: 0px;
+      
+    }
+    
+    
+    .card-buttons button:hover {
+      background-color: #ff3333;
+    }
+  
+  }
+  
+  @media screen and (max-width: 600px) {
+    
+    .card-container {
+      position: relative;
       margin-top: 0;
       
     }
