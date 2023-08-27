@@ -285,9 +285,27 @@ nav .logo-container .logo {
     color: #261ad1;
   }
   
-  .card-buttons button {
+  .connect-button-styling button {
     padding: 10px 20px;
-    background: linear-gradient(260deg, #12c2e9, #c471ed, #f64f59);
+    background: linear-gradient(260deg, #c2e912, #edd071, #f6b34f);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .back-button-styling button {
+    padding: 10px 20px;
+    background: linear-gradient(260deg, #e91264, #ed71d2, #e34ff6);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .next-button-styling button {
+    padding: 10px 20px;
+    background: linear-gradient(260deg, #e91264, #ed71d2, #e34ff6);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -367,9 +385,27 @@ nav .logo-container .logo {
       color: #261ad1;
     }
     
-    .card-buttons button {
+    .connect-button-styling button {
       padding: 10px 20px;
-      background: linear-gradient(260deg, #12c2e9, #c471ed, #f64f59);
+      background: linear-gradient(260deg, #c2e912, #edd071, #f6b34f);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .back-button-styling button {
+      padding: 10px 20px;
+      background: linear-gradient(260deg, #e91264, #ed71d2, #e34ff6);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    .next-button-styling button {
+      padding: 10px 20px;
+      background: linear-gradient(260deg, #e91264, #ed71d2, #e34ff6);
       color: #fff;
       border: none;
       border-radius: 5px;

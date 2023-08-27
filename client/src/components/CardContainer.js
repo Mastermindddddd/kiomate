@@ -100,26 +100,29 @@ const CardContainer = () => {
               <p>Qualities: {currentGenderedUser.qualities}</p>
               <p>Deal Breaker: {currentGenderedUser.dealbreaker}</p>
             </div>
-            <div className="card-buttons">
+              <div className="back-button-styling">
+                <div className='back-button'>
+                  <button onClick={handleBack} disabled={currentIndex === 0}>
+                    Back
+                  </button>
+                </div>
+              </div>
+              <div className="connect-button-styling">
               <div className='connect-button'>
                 {message && <div className="message">{message}</div>}
                 <button onClick={() => handleVibe(currentGenderedUser.user_id, currentGenderedUser.first_name)}>
                   connect
                 </button>
               </div>
-              <div className="navigation-buttons">
-                <div className='back-button'>
-                  <button onClick={handleBack} disabled={currentIndex === 0}>
-                    Back
-                  </button>
-                </div>
-                <div className='next-button'>
+            </div>
+              <div className='next-button-styling'>
+              <div className='next-button'>
                   <button onClick={handleNext} disabled={currentIndex === filteredGenderedUsers.length - 1}>
                     Next
                   </button>
                 </div>
               </div>
-            </div>
+                
           </div>
         )}
       </div>
