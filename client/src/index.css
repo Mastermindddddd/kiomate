@@ -97,7 +97,8 @@ nav .logo-container .logo {
 
 /*-------- Home page --------*/
 .overlay {
-    min-height: 100%;
+    width: 100vw;
+    height: 100vh;
     position: fixed;
     background: linear-gradient(
             to bottom,
@@ -253,7 +254,6 @@ nav .logo-container .logo {
     background-size: cover;
     background-position: center;
     border-radius: 20px;
-    
    
   }
 
@@ -530,7 +530,8 @@ html, body {
   }
   
   .chat-container {
-    min-height: 100%;
+    width: 100%;
+    height: 100vh;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -540,7 +541,6 @@ html, body {
     background-image: url('images/pexels-aleksandar-pasaric-2385210.jpg');
     background-size: cover;
     background-position: center;
-
   }
 
   .chat-container::after{
