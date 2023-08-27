@@ -254,7 +254,7 @@ nav .logo-container .logo {
     background-size: cover;
     background-position: center;
     border-radius: 20px;
-    margin-left: 300px;
+   
   }
 
   
@@ -347,7 +347,7 @@ nav .logo-container .logo {
       background-size: cover;
       background-position: center;
       border-radius: 20px;
-      margin-left: 100px;
+  
     }
   
     
@@ -431,7 +431,7 @@ nav .logo-container .logo {
       background-size: cover;
       background-position: center;
       border-radius: 20px;
-      margin-left: 15px;
+     
     }
   
     
@@ -627,6 +627,11 @@ html, body {
 }
 
 @media screen and (max-width: 700px) {
+  .chat-container .chat-container-header {
+    width: 300px;
+    padding: 0 10px;
+  }
+  
   .chat-container {
     width: 100vh;
     height: 100vh;
