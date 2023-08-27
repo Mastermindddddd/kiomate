@@ -239,9 +239,9 @@ nav .logo-container .logo {
 /*-------- Dashboard  --------*/
 
   .card-container {
-    position: relative;
-    width: 0px; /* Adjust the width as needed */
-    margin-top: 0;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
     
   }
   
@@ -317,7 +317,6 @@ nav .logo-container .logo {
     font-size: 30px;
     background-clip: text;
     float: left;
-    margin-left: 230px;
   }
   
   
@@ -327,9 +326,6 @@ nav .logo-container .logo {
     font-size: 30px;
     background-clip: text;
     float: left;
-    margin-right: 230px;
-
-    
   }
   
   .next-button {
@@ -337,8 +333,6 @@ nav .logo-container .logo {
     -webkit-background-clip: text;
     font-size: 30px;
     background-clip: text;
-    float: right;
-    margin-left: 150px;
     
   }
   
@@ -348,13 +342,6 @@ nav .logo-container .logo {
   }
 
   @media screen and (max-width: 1000px) {
-    
-    .card-container {
-      position: relative;
-      width: 300px; /* Adjust the width as needed */
-      margin-top: 0;
-      
-    }
     
     .card {
       display: flex;
@@ -417,7 +404,7 @@ nav .logo-container .logo {
       font-size: 30px;
       background-clip: text;
       float: left;
-      margin-left: 0px;
+ 
     }
     
     
@@ -450,10 +437,11 @@ nav .logo-container .logo {
   }
   
   @media screen and (max-width: 600px) {
-    
+
     .card-container {
-      position: relative;
-      margin-top: 0;
+      margin: 0px;
+      width: 50%;
+      padding: 10px;
       
     }
     
