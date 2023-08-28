@@ -285,6 +285,9 @@ nav .logo-container .logo {
     color: #261ad1;
   }
   
+  .card-buttons {
+    align-items: row;
+  }
   .connect-button-styling button {
     padding: 10px 20px;
     background: linear-gradient(260deg, #c2e912, #edd071, #f6b34f);
@@ -440,21 +443,23 @@ nav .logo-container .logo {
 
     .card-container {
       margin: 0px;
-      width: 50%;
+      width: 90%;
       padding: 10px;
       
     }
     
     .card {
-      display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
-      width: 330px;
       height: 500px; /* Adjust the height as needed */
       background-size: cover;
       background-position: center;
       border-radius: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
      
     }
   
