@@ -241,7 +241,7 @@ nav .logo-container .logo {
   .card-container {
     margin: auto;
     width: 50%;
-    height: 100%;
+    height: 100vh;
     padding: 10px;
     align-items: center;
     
@@ -347,20 +347,29 @@ nav .logo-container .logo {
   }
 
   @media screen and (max-width: 1000px) {
+
+    .card-container {
+      margin: 0px;
+      width: 100vw;
+      height: 100vh;
+      padding: 10px;
+      
+    }
     
     .card {
-      display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
-      height: 90%;
-      /* Adjust the height as needed */
+      height: 89%; /* Adjust the height as needed */
+      width: 80%;
       background-size: cover;
       background-position: center;
       border-radius: 20px;
-  
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+     
     }
-  
     
     
     .card-info-container {
@@ -446,7 +455,8 @@ nav .logo-container .logo {
 
     .card-container {
       margin: 0px;
-      width: 90%;
+      width: 100vw;
+      height: 100vh;
       padding: 10px;
       
     }
@@ -455,14 +465,14 @@ nav .logo-container .logo {
       justify-content: center;
       align-items: center;
       position: relative;
-      height: 500px; /* Adjust the height as needed */
+      height: 89%; /* Adjust the height as needed */
+      width: 80%;
       background-size: cover;
       background-position: center;
       border-radius: 20px;
       display: block;
       margin-left: auto;
       margin-right: auto;
-      width: 100%;
      
     }
   
@@ -538,13 +548,13 @@ html, body {
   }
   
   .chat-container {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     text-align: left;
     display: flex;
     flex-direction: column;
     flex-grow: 0;
-    position: relative;
+    position: fixed;
     isolation: isolate;
     background-image: url('images/pexels-aleksandar-pasaric-2385210.jpg');
     background-size: cover;
@@ -571,7 +581,7 @@ html, body {
   
   .chat-container .chat-container-header {
     background: -moz-linear-gradient(top, #f64f59 0%, #f64f59 50%, #f64f59 51%, #c471ed 100%);
-    width: 1806px;
+    width: 100vw;
     height: 100px;
     display: flex;
     justify-content: space-between;
@@ -625,16 +635,6 @@ html, body {
     width: 100%;
   }
 
-  
-  
-  @media (max-width: 600px) {
-    .chat-container {
-      max-width: 100%;
-      height: 100vh;
-      margin: 0;
-    }
-  }
-
   /* Media Query for Small Screens */
 @media screen and (max-width: 1000px) {
   .chat-container .chat-container-header {
@@ -659,13 +659,9 @@ html, body {
 }
 
 @media screen and (max-width: 700px) {
-  .chat-container .chat-container-header {
-    width: 300px;
-    padding: 0 10px;
-  }
   
   .chat-container {
-    width: 100vh;
+    width: 100vw;
     height: 100vh;
     text-align: left;
     display: flex;
@@ -685,7 +681,6 @@ html, body {
     padding: 7px;
     color: rgb(255, 255, 255);
     font-size: 10px;
-    margin-right: 20px;
   }
 
   .img-container {
@@ -718,13 +713,13 @@ html, body {
 .chat-display,
 .matches-display {
     padding: 20px;
-    height: 60vh;
+    height: 100vh;
     overflow-y: auto;
 }
 
 .match-card {
   background: #c9101a;
-  height: 75px;
+  height: 10vh;
   display: flex;
   align-items: center;
   padding: 0 20px;
