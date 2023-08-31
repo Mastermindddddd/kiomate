@@ -241,7 +241,9 @@ nav .logo-container .logo {
   .card-container {
     margin: auto;
     width: 50%;
+    height: 100%;
     padding: 10px;
+    align-items: center;
     
   }
   
@@ -351,6 +353,7 @@ nav .logo-container .logo {
       justify-content: center;
       align-items: center;
       position: relative;
+      height: 90%;
       /* Adjust the height as needed */
       background-size: cover;
       background-position: center;
@@ -721,12 +724,11 @@ html, body {
 
 .match-card {
   background: #c9101a;
-  
-    height: 75px;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    border-radius: 20px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-radius: 20px;
 }
 
 
