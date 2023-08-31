@@ -15,7 +15,7 @@ h2 {
 }
 
 .primary-title {
-    font-size: 90px;
+    font-size: 40px;
     color: rgb(255, 255, 255);
 }
 
@@ -151,6 +151,7 @@ nav .logo-container .logo {
     margin: 8px;
     font-size: 17px;
 }
+
 
 /*-------- OnBoarding Page --------*/
 .onboarding {
