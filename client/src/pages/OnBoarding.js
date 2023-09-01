@@ -359,6 +359,7 @@ const OnBoarding = () => {
                         />
                          
                         <section>
+                        <label htmlFor="url">Profile Photo</label>
                             <input
                                 type="file"
                                 name="img"
@@ -372,26 +373,7 @@ const OnBoarding = () => {
 
 
                         </section>
-                        <div className='or'>
-                            <h2>OR</h2>
-                        </div>
-                        <section>
-
-                            <label htmlFor="url">Profile Photo</label>
-                            <input
-                                type="url"
-                                name="url"
-                                id="url"        
-                                placeholder='image link'
-                                onChange={handleChange}
-                                required={true}
-                            />
-                            <div className="photo-container">
-                                {formData.url && <img src={formData.url} alt="profile pic preview"/>}
-                            </div>
-
-
-                        </section>
+                        
                         <input type="submit"/>
                     </section>
 
