@@ -357,7 +357,25 @@ const OnBoarding = () => {
                             value={formData.dealbreaker}
                             onChange={handleChange}
                         />
-                         <section>
+                         
+                        <section>
+                            <input
+                                type="file"
+                                name="img"
+                                id="img"        
+                                onChange={handleChange}
+                                required={true}
+                            />
+                            <div className="photo-container">
+                                {formData.img && <img src={formData.img} alt="profile pic preview"/>}
+                            </div>
+
+
+                        </section>
+                        <div className='or'>
+                            <h2>OR</h2>
+                        </div>
+                        <section>
 
                             <label htmlFor="url">Profile Photo</label>
                             <input
@@ -374,24 +392,6 @@ const OnBoarding = () => {
 
 
                         </section>
-                        <div className='or'>
-                            <h2>OR</h2>
-                        </div>
-                        <section>
-                            <input
-                                type="file"
-                                name="img"
-                                id="img"        
-                                onChange={handleChange}
-                                required={true}
-                            />
-                            <div className="photo-container">
-                                {formData.img && <img src={formData.img} alt="profile pic preview"/>}
-                            </div>
-
-
-                        </section>
-
                         <input type="submit"/>
                     </section>
 
