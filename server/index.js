@@ -210,7 +210,8 @@ app.put('/user', async (req, res) => {
                 interests: formData.interests,
                 idealdate: formData.idealdate,
                 qualities: formData.qualities,
-                dealbreaker: formData.dealbreaker
+                dealbreaker: formData.dealbreaker,
+                img: formData.img
             },
         }
 

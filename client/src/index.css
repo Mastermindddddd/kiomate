@@ -164,7 +164,9 @@ nav .logo-container .logo {
     flex-direction: column;
     align-content: center;
 }
-
+.or h2{
+  text-align: center;
+}
 .onboarding form section {
     display: flex;
     flex-direction: column;
@@ -243,7 +245,6 @@ nav .logo-container .logo {
     margin: auto;
     width: 50%;
     height: 100vh;
-    padding: 10px;
     align-items: center;
     
   }
@@ -299,7 +300,7 @@ nav .logo-container .logo {
     border-radius: 5px;
     cursor: pointer;
   }
-
+  .card-buttons
   .back-button-styling button {
     padding: 10px 20px;
     background: linear-gradient(260deg, #e91264, #ed71d2, #e34ff6);
@@ -353,7 +354,6 @@ nav .logo-container .logo {
       margin: 0px;
       width: 100vw;
       height: 100vh;
-      padding: 10px;
       
     }
     
@@ -453,14 +453,6 @@ nav .logo-container .logo {
   }
   
   @media screen and (max-width: 600px) {
-
-    .card-container {
-      margin: 0px;
-      width: 100vw;
-      height: 100vh;
-      padding: 10px;
-      
-    }
     
     .card {
       justify-content: center;
@@ -587,7 +579,6 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
   }
   
   .chat-container .tab {
@@ -638,11 +629,6 @@ html, body {
 
   /* Media Query for Small Screens */
 @media screen and (max-width: 1000px) {
-  .chat-container .chat-container-header {
-    width: 100vw;
-    padding: 0 10px;
-  }
-  
   .chat-container .tab {
     font-size: 12px;
     margin: 0 5px;
