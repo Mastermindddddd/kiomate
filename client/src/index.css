@@ -639,7 +639,7 @@ html, body {
   /* Media Query for Small Screens */
 @media screen and (max-width: 1000px) {
   .chat-container .chat-container-header {
-    width: 100%;
+    width: 100vw;
     padding: 0 10px;
   }
   
