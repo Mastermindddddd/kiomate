@@ -84,7 +84,7 @@ const CardContainer = () => {
       <div className="card-container">
         {currentGenderedUser && (
           <div
-            style={{ backgroundImage: `url(${currentGenderedUser.url})` }}
+            style={{ backgroundImage: `url(${currentGenderedUser.img})` }}
             className="card"
           >
             <div className="card-info-container">
@@ -100,6 +100,7 @@ const CardContainer = () => {
               <p>Qualities: {currentGenderedUser.qualities}</p>
               <p>Deal Breaker: {currentGenderedUser.dealbreaker}</p>
             </div>
+            <div className='card-buttons'>
               <div className="back-button-styling">
                 <div className='back-button'>
                   <button onClick={handleBack} disabled={currentIndex === 0}>
@@ -121,6 +122,7 @@ const CardContainer = () => {
                     Next
                   </button>
                 </div>
+              </div>
               </div>
                 
           </div>

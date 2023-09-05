@@ -4,6 +4,7 @@ import {useCookies} from 'react-cookie'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
+
 const OnBoarding = () => {
     const [cookies, setCookie, removeCookie] = useCookies(null)
     const [error, setError] = useState(null);
@@ -17,7 +18,6 @@ const OnBoarding = () => {
         show_gender: false,
         gender_identity: "man",
         gender_interest: "woman",
-        url: "",
         img: "",
         about: "",
         matches: [],
@@ -37,6 +37,10 @@ const OnBoarding = () => {
         console.log('submitted')
         e.preventDefault()
         try {
+            const updatedFormData = {
+              ...formData,
+              img: img, // Assuming img contains the base64 image data
+            };
             const response = await axios.put('https://dark-ruby-mackerel-gown.cyclic.app/user', {formData})
             console.log(response)
             const success = response.status === 200
@@ -99,6 +103,20 @@ const OnBoarding = () => {
         }));
       }
     };
+    const[img, setImg] = useState("");
+
+    const convertToBase64 = (e) => {
+      console.log(e);
+      const reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = () => {
+        console.log(reader.result);
+        setImg(reader.result);
+      };
+      reader.onerror = error => {
+        console.log("Error: ", error);
+      };
+    }
     
       
     const days = Array.from({ length: 31 }, (_, i) => i + 1);
@@ -361,15 +379,16 @@ const OnBoarding = () => {
                         <section>
                         <label htmlFor="url">Profile Photo</label>
                             <input
+                                accept='image/*'
                                 type="file"
                                 name="img"
                                 id="img"        
-                                onChange={handleChange}
+                                onChange={convertToBase64}
                                 required={true}
                             />
                             <div className="photo-container">
-                                {formData.img && <img src={formData.img} alt="profile pic preview"/>}
-                            </div>
+  {img && <img src={img} alt="profile pic preview" />}
+</div>
 
 
                         </section>
