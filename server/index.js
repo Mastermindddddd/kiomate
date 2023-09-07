@@ -210,8 +210,7 @@ app.put('/user', async (req, res) => {
                 idealdate: formData.idealdate,
                 qualities: formData.qualities,
                 dealbreaker: formData.dealbreaker,
-                img: formData.img
-            },
+                image: formData.image            },
         }
 
         const insertedUser = await users.updateOne(query, updateDocument)

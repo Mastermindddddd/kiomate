@@ -4,7 +4,6 @@ import {useCookies} from 'react-cookie'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
-
 const OnBoarding = () => {
     const [cookies, setCookie, removeCookie] = useCookies(null)
     const [error, setError] = useState(null);
@@ -18,7 +17,7 @@ const OnBoarding = () => {
         show_gender: false,
         gender_identity: "man",
         gender_interest: "woman",
-        img: "",
+        image: "",
         about: "",
         matches: [],
         location: "",
@@ -37,10 +36,6 @@ const OnBoarding = () => {
         console.log('submitted')
         e.preventDefault()
         try {
-            const updatedFormData = {
-              ...formData,
-              img: img, // Assuming img contains the base64 image data
-            };
             const response = await axios.put('https://dark-ruby-mackerel-gown.cyclic.app/user', {formData})
             console.log(response)
             const success = response.status === 200
@@ -103,20 +98,6 @@ const OnBoarding = () => {
         }));
       }
     };
-    const[img, setImg] = useState("");
-
-    const convertToBase64 = (e) => {
-      console.log(e);
-      const reader = new FileReader();
-      reader.readAsDataURL(e.target.files[0]);
-      reader.onload = () => {
-        console.log(reader.result);
-        setImg(reader.result);
-      };
-      reader.onerror = error => {
-        console.log("Error: ", error);
-      };
-    }
     
       
     const days = Array.from({ length: 31 }, (_, i) => i + 1);
@@ -125,6 +106,12 @@ const OnBoarding = () => {
   // Generate years dropdown options from the current year to 100 years ago
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
+
+  const [image, setImage] = useState();
+  const onInputChange = (e) => {
+    console.log(e.target.files[0]);
+    setImage(e.target.files[0]);
+  }
       
       
       
@@ -377,18 +364,18 @@ const OnBoarding = () => {
                         />
                          
                         <section>
-                        <label htmlFor="url">Profile Photo</label>
+                        <label htmlFor="image">Profile Photo</label>
                             <input
                                 accept='image/*'
                                 type="file"
-                                name="img"
-                                id="img"        
-                                onChange={convertToBase64}
+                                name="image"
+                                id="image"        
+                                onChange={onInputChange}
                                 required={true}
                             />
                             <div className="photo-container">
-  {img && <img src={img} alt="profile pic preview" />}
-</div>
+                                {formData.img && <img src={formData.img} alt="profile pic preview"/>}
+                            </div>
 
 
                         </section>
