@@ -612,7 +612,7 @@ html, body {
     display: flex;
     align-items: center;
     padding: 20px;
-    color: rgb(255, 255, 255);
+    color: rgb(126, 3, 120);
   }
   
   .img-container {
@@ -666,7 +666,7 @@ html, body {
     display: flex;
     align-items: center;
     padding: 7px;
-    color: rgb(255, 255, 255);
+    color: rgb(126, 3, 120);
     font-size: 10px;
   }
 
@@ -705,12 +705,17 @@ html, body {
 }
 
 .match-card {
-  background: #c9101a;
-  height: 10vh;
+  background: #a5028a;
+  height: 5vh;
   display: flex;
   align-items: center;
   padding: 0 20px;
-  border-radius: 20px;
+  border-radius: 75px;
+  margin-bottom: 15px;
+}
+
+.match-card h3 {
+  font-size: 1em;
 }
 
 
@@ -728,12 +733,11 @@ html, body {
     color: aquamarine;
     width: fit-content;
     border-radius: 10px;
+    height: 4vh;
 }
 @media screen and (max-width: 800px) {
   .match-card {
-    background: #c9101a;
-  
-      height: 45px;
+    background: #a5028a;
       display: flex;
       align-items: center;
       padding: 0 20px;
