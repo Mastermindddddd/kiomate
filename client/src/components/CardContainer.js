@@ -12,7 +12,7 @@ const CardContainer = () => {
 
   const getUser = async () => {
     try {
-      const response = await axios.get('https://dark-ruby-mackerel-gown.cyclic.app/user', {
+      const response = await axios.get('https://kiomate-server.vercel.app/user', {
         params: { userId }
       });
       setUser(response.data);
@@ -23,7 +23,7 @@ const CardContainer = () => {
 
   const getGenderedUsers = async () => {
     try {
-      const response = await axios.get('https://dark-ruby-mackerel-gown.cyclic.app/gendered-users', {
+      const response = await axios.get('https://kiomate-server.vercel.app/gendered-users', {
         params: { gender: user?.gender_interest }
       });
       setGenderedUsers(response.data);
@@ -44,7 +44,7 @@ const CardContainer = () => {
 
   const updateMatches = async (matchedUserId) => {
     try {
-      await axios.put('https://dark-ruby-mackerel-gown.cyclic.app/addmatch', {
+      await axios.put('https://kiomate-server.vercel.app/addmatch', {
         userId,
         matchedUserId
       });

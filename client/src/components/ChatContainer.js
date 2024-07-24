@@ -19,7 +19,7 @@ const ChatContainer = ({ user }) => {
     // Fetch or calculate filteredGenderedUsers data
     const fetchFilteredGenderedUsers = async () => {
       try {
-        const response = await axios.get('https://dark-ruby-mackerel-gown.cyclic.app/gendered-users', {
+        const response = await axios.get('https://kiomate-server.vercel.app/gendered-users', {
           params: { gender: user?.gender_interest }
         });
         setFilteredGenderedUsers(response.data);

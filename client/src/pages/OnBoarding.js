@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
 const OnBoarding = () => {
-    const [cookies, setCookie, removeCookie] = useCookies(null)
+    const [cookies, setCookie] = useCookies(null)
     const [error, setError] = useState(null);
     const [formData, setFormData] = useState({
         user_id: cookies.UserId,
@@ -36,7 +36,7 @@ const OnBoarding = () => {
         console.log('submitted')
         e.preventDefault()
         try {
-            const response = await axios.put('https://dark-ruby-mackerel-gown.cyclic.app/user', {formData})
+            const response = await axios.put('https://kiomate-server.vercel.app/user', {formData})
             console.log(response)
             const success = response.status === 200
             if (success) navigate('/Dashboard')

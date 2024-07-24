@@ -48,7 +48,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       }
 
       const response = await axios.post(
-        `https://dark-ruby-mackerel-gown.cyclic.app/${
+        `https://kiomate-server.vercel.app/${
           isSignUp ? 'signup' : 'login'
         }`,
         { email, password }
