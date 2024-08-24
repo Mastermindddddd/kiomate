@@ -10,7 +10,7 @@ require('dotenv').config()
 
 const uri = process.env.URI
 // Import the allowCors middleware
-const allowCors = require('./allowCors'); // Change the path accordingly
+const allowCors = require('./allowCors');
 
 const app = express()
 app.use(cors())

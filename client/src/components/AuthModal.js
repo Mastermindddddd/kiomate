@@ -48,7 +48,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       }
 
       const response = await axios.post(
-        `https://kiomate-server.vercel.app/${
+        `https://kiomate-mastermindddddds-projects.vercel.app/${
           isSignUp ? 'signup' : 'login'
         }`,
         { email, password }

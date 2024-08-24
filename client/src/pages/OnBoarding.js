@@ -36,7 +36,7 @@ const OnBoarding = () => {
         console.log('submitted')
         e.preventDefault()
         try {
-            const response = await axios.put('https://kiomate-server.vercel.app/user', {formData})
+            const response = await axios.put('https://kiomate-mastermindddddds-projects.vercel.app/user', {formData})
             console.log(response)
             const success = response.status === 200
             if (success) navigate('/Dashboard')
