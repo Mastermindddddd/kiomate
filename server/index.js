@@ -9,12 +9,18 @@ require('dotenv').config()
 
 
 const uri = process.env.URI
-// Import the allowCors middleware
-const allowCors = require('./allowCors');
+const corsOptions = {
+    origin: ['https://kiomate.online', 'http://localhost:5173', 'http://localhost:5174'],
+    credentials: true,
+    exposedHeaders: ['set-cookie'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  };
 
-const app = express()
-app.use(cors())
-app.use(express.json())
+
+const app = express();
+app.use(cors(corsOptions));
+app.use(express.json());
 
 // Default
 app.get('/', (req, res) => {
